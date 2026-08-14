@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  =====================================================================
+  sitemap.xml — le « plan du site » destiné à Google
+  =====================================================================
+  Ce fichier liste les pages du site pour que Google les trouve vite.
+
+  QUAND LE MODIFIER ?
+  • Si tu changes l'adresse du site : remplace les adresses ci-dessous.
+  • Si tu ajoutes une nouvelle page : copie un bloc <url> ... </url>
+    entier et adapte-le.
+  • La date <lastmod> indique la dernière modification (format
+    AAAA-MM-JJ). Ce n'est pas obligatoire de la tenir à jour, mais
+    c'est un petit plus pour le référencement.
+  =====================================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Page d'accueil, version française -->
+  <url>
+    <loc>https://neufofa.github.io/ecorun/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://neufofa.github.io/ecorun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://neufofa.github.io/ecorun/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://neufofa.github.io/ecorun/"/>
+  </url>
+
+  <!-- Page d'accueil, version anglaise -->
+  <url>
+    <loc>https://neufofa.github.io/ecorun/en/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://neufofa.github.io/ecorun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://neufofa.github.io/ecorun/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://neufofa.github.io/ecorun/"/>
+  </url>
+
+</urlset>

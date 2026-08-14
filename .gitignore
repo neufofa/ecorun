@@ -1,0 +1,42 @@
+# =====================================================================
+# .gitignore — fichiers à NE PAS publier en ligne
+# =====================================================================
+# GitHub publie tout ce qui se trouve dans le dossier du site.
+# Ce fichier permet d'exclure ce qui doit rester privé ou inutile.
+# Une ligne = un fichier ou un dossier à ignorer.
+# =====================================================================
+
+# Document de travail contenant tes informations personnelles.
+# ⚠️ Ne jamais publier : il serait consultable par n'importe qui.
+information_site.odt
+
+# Dossier de configuration de l'éditeur, inutile en ligne
+.claude/
+
+# Images et documents SOURCES.
+# Ils restent sur ton ordinateur mais ne sont pas publiés : les versions
+# recadrées et allégées se trouvent déjà dans le dossier images/.
+photo_moi1.jpg
+photo_moi2.jpg
+photo_moi3.jpg
+photo_moi4.jpg
+flo_petrel.jpg
+jdn.jpg
+mt180.png
+Tuit-tuit-JaimeMARTINEZ.jpg
+Logo_bestrun.jpg
+logo_ecorun.png
+logo_entropie.png
+logo_marbec.png
+logo_seor.jpg
+logo_laval.png
+logo_univreunion.jpg
+logo_murene.png
+logo_fsttr.png
+logo-rep-taaf.png
+image_these_mt180.pdf
+
+# Fichiers système générés automatiquement par Windows et macOS
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,1709 @@
+/* =====================================================================
+   SITE ECORUN, FEUILLE DE STYLE (toutes les couleurs et la mise en page)
+   =====================================================================
+
+   COMMENT ÇA MARCHE (pour un non-informaticien)
+   ---------------------------------------------
+   • Un COMMENTAIRE commence par une barre oblique suivie d'une étoile,
+     et se termine par une étoile suivie d'une barre oblique. Ce qui est
+     à l'intérieur n'est pas appliqué au site : c'est une explication
+     pour toi. Tous les blocs d'explication ci-dessous sont ainsi.
+   • Le fichier est découpé en parties numérotées. Utilise la recherche
+     (Ctrl + F) avec le numéro, par exemple "5. HERO", pour t'y retrouver.
+   • LE PLUS SIMPLE POUR CHANGER LES COULEURS : va directement à la
+     partie "1. LES COULEURS DU SITE" juste en dessous, et modifie
+     uniquement les codes couleur (#45D1C4, etc.). Tout le site suivra.
+
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. LES COULEURS DU SITE  ← LE SEUL ENDROIT À MODIFIER POUR LE THÈME
+   ---------------------------------------------------------------------
+   Ces "variables" sont des couleurs nommées, réutilisées partout.
+   Si tu changes --turquoise ici, TOUS les éléments turquoise du site
+   changent d'un coup.
+   Un code couleur s'écrit #RRVVBB (Rouge Vert Bleu, en hexadécimal).
+   Astuce : cherche "color picker" sur Google pour trouver un code.
+   ===================================================================== */
+:root {
+
+  /* --- Fonds (du plus sombre au plus clair) --- */
+  --abysse:       #060F1A;   /* fond principal de la page */
+  --profond:      #0A1826;   /* fond des sections alternées */
+  --nuit:         #0F2033;   /* fond des cartes */
+  --nuit-clair:   #16304A;   /* fond des cartes au survol */
+
+  /* --- Couleurs d'accent --- */
+  --turquoise:    #45D1C4;   /* accent principal (liens, traits, icônes) */
+  --bleu:         #58B4E8;   /* accent secondaire */
+  --vert:         #9AC953;   /* rappel du vert du logo ECORUN */
+
+  /* --- Textes --- */
+  --texte:        #E6EEF6;   /* texte principal, presque blanc */
+  --texte-doux:   #9FB3C8;   /* texte secondaire, gris-bleu */
+  --texte-faible: #6E8299;   /* texte discret (dates, légendes) */
+
+  /* --- Traits et séparations --- */
+  --bordure:      rgba(255, 255, 255, 0.09);
+  --bordure-vive: rgba(69, 209, 196, 0.35);
+
+  /* --- Polices de caractères ---
+     On n'utilise QUE des polices déjà présentes sur l'ordinateur du
+     visiteur : le site s'affiche instantanément, fonctionne hors ligne
+     et ne dépend d'aucun service extérieur (bon pour le RGPD). */
+  --police: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --police-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "Courier New", monospace;
+
+  /* --- Largeur maximale du contenu et arrondis --- */
+  --largeur-max: 1220px;
+  --arrondi:     14px;
+  --arrondi-sm:  8px;
+
+  /* --- Ombres --- */
+  --ombre:       0 18px 45px rgba(0, 0, 0, 0.45);
+  --ombre-douce: 0 6px 20px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =====================================================================
+   2. RÉINITIALISATION ET RÉGLAGES DE BASE
+   Met tous les navigateurs (Chrome, Firefox, Safari, Edge) d'accord
+   pour qu'ils affichent la page de la même façon.
+   ===================================================================== */
+
+/* La bordure et le remplissage sont inclus dans la largeur : plus simple */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Supprime les marges par défaut du navigateur */
+body, h1, h2, h3, h4, p, ul, ol, li, figure, figcaption, blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol { list-style: none; }
+
+html {
+  /* Le défilement est fluide quand on clique sur un lien du menu */
+  scroll-behavior: smooth;
+  /* Décale l'arrivée pour que l'en-tête fixe ne cache pas le titre */
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--police);
+  font-size: 1rem;              /* 16 px */
+  line-height: 1.7;
+  color: var(--texte);
+  background-color: var(--abysse);
+  /* Lissage du texte sur Mac */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Empêche un débordement horizontal accidentel sur mobile */
+  overflow-x: hidden;
+}
+
+/* Les images ne dépassent jamais de leur conteneur */
+img, svg { max-width: 100%; display: block; }
+img { height: auto; }
+
+a { color: var(--turquoise); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Contour visible au clavier (accessibilité) */
+:focus-visible {
+  outline: 2px solid var(--turquoise);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Lien "aller au contenu" : caché sauf quand on navigue au clavier */
+.saut-contenu {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  padding: 12px 20px;
+  background: var(--turquoise);
+  color: var(--abysse);
+  font-weight: 600;
+  border-radius: 0 0 var(--arrondi-sm) 0;
+}
+.saut-contenu:focus { left: 0; }
+
+
+/* =====================================================================
+   3. ÉLÉMENTS RÉUTILISABLES (conteneur, titres, boutons, étiquettes)
+   ===================================================================== */
+
+/* Boîte qui centre le contenu et l'empêche d'être trop large */
+.conteneur {
+  width: 100%;
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Une "section" = un grand bloc de la page --- */
+.section { padding: 110px 0; position: relative; }
+
+/* Variante avec un fond légèrement différent, pour alterner */
+.section--fonce { background: var(--profond); }
+
+/* Fin trait lumineux en haut des sections foncées */
+.section--fonce::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--bordure-vive), transparent);
+}
+
+/* --- En-tête de section (le petit numéro + le titre + l'intro) --- */
+.section__entete { max-width: 760px; margin-bottom: 60px; }
+.section__entete--centre { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* Le petit "01 / Profil" en majuscules espacées : touche scientifique */
+.section__oeil {
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  margin-bottom: 14px;
+}
+
+.section__titre {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);  /* s'adapte à la largeur de l'écran */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.section__intro {
+  color: var(--texte-doux);
+  font-size: 1.08rem;
+  max-width: 68ch;
+}
+.section__entete--centre .section__intro { margin: 0 auto; }
+
+/* Sous-titre à l'intérieur d'une section (ex : "Articles scientifiques") */
+.sous-titre {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 54px 0 22px;
+  padding-left: 16px;
+  border-left: 3px solid var(--turquoise);
+}
+.sous-titre:first-of-type { margin-top: 0; }
+
+/* --- Boutons --- */
+.bouton {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 999px;         /* forme de gélule */
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+              border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.bouton:hover { text-decoration: none; transform: translateY(-2px); }
+
+/* Bouton plein (turquoise) */
+.bouton--plein {
+  background: var(--turquoise);
+  color: #04121A;
+  box-shadow: 0 8px 24px rgba(69, 209, 196, 0.25);
+}
+.bouton--plein:hover {
+  background: #5FE0D3;
+  box-shadow: 0 12px 30px rgba(69, 209, 196, 0.35);
+}
+
+/* Bouton vide (contour seulement) */
+.bouton--vide {
+  background: transparent;
+  color: var(--texte);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.bouton--vide:hover {
+  border-color: var(--turquoise);
+  color: var(--turquoise);
+  background: rgba(69, 209, 196, 0.06);
+}
+
+/* --- Étiquettes (les petits mots-clés dans les cartes) --- */
+.etiquettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.etiquettes li {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--bordure);
+  color: var(--texte-doux);
+}
+.etiquettes--fines li { font-size: 0.74rem; padding: 3px 10px; }
+.etiquettes--grandes li {
+  font-size: 0.92rem;
+  padding: 9px 18px;
+  color: var(--texte);
+}
+.etiquettes--grandes li em { color: var(--texte-faible); font-style: normal; }
+
+/* --- Pastille "Disponible pour missions" --- */
+.pastille {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 16px 6px 12px;
+  border-radius: 999px;
+  color: var(--vert);
+  background: rgba(154, 201, 83, 0.09);
+  border: 1px solid rgba(154, 201, 83, 0.3);
+  margin-bottom: 24px;
+}
+.pastille__point {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--vert);
+  /* Petite pulsation pour attirer l'œil */
+  animation: pulsation 2.4s ease-in-out infinite;
+}
+@keyframes pulsation {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(154, 201, 83, 0.55); }
+  50%      { box-shadow: 0 0 0 7px rgba(154, 201, 83, 0); }
+}
+
+/* --- Cadre photo (encadrement des images du site) --- */
+.cadre-photo {
+  position: relative;
+  border-radius: var(--arrondi);
+  overflow: hidden;
+  border: 1px solid var(--bordure);
+  box-shadow: var(--ombre);
+  background: var(--nuit);
+}
+.cadre-photo img {
+  width: 100%;
+  transition: transform 0.7s ease;
+}
+.cadre-photo:hover img { transform: scale(1.03); }
+
+/* Légende posée en bas de la photo, sur un voile sombre */
+.cadre-photo figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 34px 18px 14px;
+  font-size: 0.82rem;
+  color: var(--texte-doux);
+  background: linear-gradient(to top, rgba(6, 15, 26, 0.95), transparent);
+}
+
+
+/* =====================================================================
+   4. EN-TÊTE ET MENU DE NAVIGATION
+   ===================================================================== */
+
+.entete {
+  position: fixed;              /* reste collé en haut quand on descend */
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(6, 15, 26, 0.72);
+  /* Effet "verre dépoli" (ignoré par les navigateurs qui ne savent pas) */
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Classe ajoutée par le JavaScript dès qu'on descend un peu dans la page */
+.entete--defile {
+  background: rgba(6, 15, 26, 0.94);
+  border-bottom-color: var(--bordure);
+}
+
+.entete__interieur {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 74px;
+}
+
+/* --- Logo à gauche --- */
+.entete__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  color: var(--texte);
+}
+.entete__logo:hover { text-decoration: none; }
+.entete__logo img { width: 54px; height: auto; }
+
+.entete__logo-texte { display: flex; flex-direction: column; line-height: 1.15; }
+.entete__logo-texte strong {
+  font-size: 1.02rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+.entete__logo-texte small {
+  font-size: 0.7rem;
+  color: var(--texte-faible);
+  letter-spacing: 0.06em;
+}
+
+/* --- Liens du menu --- */
+.nav__liste { display: flex; align-items: center; gap: 4px; }
+
+.nav__lien {
+  display: block;
+  padding: 9px 14px;
+  border-radius: var(--arrondi-sm);
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--texte-doux);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.nav__lien:hover {
+  color: var(--texte);
+  background: rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+}
+
+/* Classe ajoutée par le JavaScript sur le lien de la section visible */
+.nav__lien--actif { color: var(--turquoise); }
+
+/* Le lien "Contact" est mis en avant comme un bouton */
+.nav__lien--bouton {
+  margin-left: 8px;
+  color: var(--turquoise);
+  border: 1px solid var(--bordure-vive);
+}
+.nav__lien--bouton:hover {
+  background: var(--turquoise);
+  color: #04121A;
+  border-color: var(--turquoise);
+}
+
+/* --- Zone de droite : drapeau + bouton hamburger --- */
+.entete__actions { display: flex; align-items: center; gap: 12px; }
+
+/* Bouton de langue (drapeau britannique) */
+.drapeau {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  color: var(--texte-doux);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.drapeau:hover {
+  text-decoration: none;
+  color: var(--texte);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+.drapeau svg { border-radius: 2px; }
+
+/* --- Bouton hamburger (caché sur ordinateur, voir partie 16) --- */
+.burger {
+  display: none;               /* réaffiché en version mobile */
+  width: 42px; height: 42px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--bordure);
+  border-radius: var(--arrondi-sm);
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--texte);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.burger span + span { margin-top: 5px; }
+
+/* Les trois barres se transforment en croix quand le menu est ouvert */
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* =====================================================================
+   5. HERO, la grande zone d'accueil en haut de page
+   ===================================================================== */
+
+.hero {
+  position: relative;
+  padding: 150px 0 110px;
+  overflow: hidden;
+  /* Dégradé "profondeur marine" : plus on descend, plus c'est sombre */
+  background:
+    radial-gradient(1100px 620px at 78% 12%, rgba(69, 209, 196, 0.10), transparent 62%),
+    radial-gradient(900px 560px at 12% 78%, rgba(88, 180, 232, 0.09), transparent 60%),
+    linear-gradient(180deg, #08192A 0%, var(--abysse) 100%);
+}
+
+/* --- Décor de fond (requin + vagues) --- */
+.hero__decor { position: absolute; inset: 0; pointer-events: none; }
+
+.hero__requin {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  width: min(1000px, 92%);
+  transform: translateX(-50%);
+  color: rgba(88, 180, 232, 0.05);   /* très discret, en filigrane */
+  /* Léger déplacement latéral, comme un requin qui passe */
+  animation: nage 26s ease-in-out infinite alternate;
+}
+@keyframes nage {
+  from { transform: translateX(-54%) translateY(0); }
+  to   { transform: translateX(-46%) translateY(-16px); }
+}
+
+/* Les trois vagues superposées en bas du hero */
+.hero__vagues { position: absolute; left: 0; right: 0; bottom: -1px; height: 190px; }
+.hero__vagues svg { position: absolute; left: 0; bottom: 0; width: 200%; height: 100%; }
+.hero__vagues svg path { fill: var(--abysse); }
+
+.hero__vagues svg:nth-child(1) { opacity: 0.30; animation: onde 19s linear infinite; }
+.hero__vagues svg:nth-child(2) { opacity: 0.45; animation: onde 27s linear infinite reverse; }
+.hero__vagues svg:nth-child(3) { opacity: 1;    animation: onde 34s linear infinite; }
+
+@keyframes onde {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* --- Disposition en deux colonnes : texte à gauche, photo à droite --- */
+.hero__grille {
+  position: relative;   /* pour passer au-dessus du décor */
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero__surtitre {
+  font-family: var(--police-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  margin-bottom: 12px;
+}
+
+.hero__titre {
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  margin-bottom: 16px;
+  /* Dégradé appliqué sur le texte lui-même */
+  background: linear-gradient(120deg, #FFFFFF 10%, #BFE9F7 55%, var(--turquoise) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--texte);   /* couleur de secours si le dégradé n'est pas géré */
+}
+
+/* "Recherche · Conservation · Sensibilisation" */
+.hero__soustitre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(1rem, 2vw, 1.22rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--texte-doux);
+  margin-bottom: 26px;
+}
+.hero__soustitre i { color: var(--turquoise); font-style: normal; }
+
+.hero__accroche {
+  color: var(--texte-doux);
+  font-size: 1.05rem;
+  max-width: 58ch;
+  margin-bottom: 26px;
+}
+
+/* Les deux spécialités mises en avant, avec une puce en losange */
+.hero__specialites { margin-bottom: 34px; }
+.hero__specialites li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  font-size: 0.99rem;
+  color: var(--texte);
+}
+.hero__specialites li::before {
+  content: "";
+  position: absolute;
+  left: 2px; top: 0.62em;
+  width: 8px; height: 8px;
+  background: var(--turquoise);
+  transform: rotate(45deg);   /* carré tourné = losange */
+}
+
+.hero__boutons { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 30px; }
+
+.hero__lieu {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--texte-faible);
+}
+.hero__lieu svg { color: var(--turquoise); flex-shrink: 0; }
+
+/* --- Photo de droite, légèrement inclinée pour le dynamisme --- */
+.hero__media { position: relative; }
+.hero__media .cadre-photo {
+  transform: rotate(1.4deg);
+  transition: transform 0.5s ease;
+}
+.hero__media .cadre-photo:hover { transform: rotate(0deg); }
+
+/* Halo turquoise derrière la photo */
+.hero__media::before {
+  content: "";
+  position: absolute;
+  inset: -22px;
+  border-radius: 26px;
+  background: radial-gradient(circle at 60% 35%, rgba(69, 209, 196, 0.22), transparent 68%);
+  filter: blur(26px);
+  z-index: -1;
+}
+
+
+/* =====================================================================
+   6. CHIFFRES CLÉS, bandeau juste sous l'accueil
+   ===================================================================== */
+
+.chiffres {
+  background: var(--profond);
+  border-top: 1px solid var(--bordure);
+  border-bottom: 1px solid var(--bordure);
+  padding: 46px 0;
+}
+
+.chiffres__grille {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.chiffre { text-align: center; position: relative; }
+
+/* Petit trait vertical entre chaque chiffre */
+.chiffre + .chiffre::before {
+  content: "";
+  position: absolute;
+  left: -10px; top: 50%;
+  transform: translateY(-50%);
+  width: 1px; height: 46px;
+  background: var(--bordure);
+}
+
+.chiffre b {
+  display: block;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--turquoise);
+  margin-bottom: 4px;
+}
+.chiffre span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--texte-doux);
+  line-height: 1.4;
+}
+
+
+/* =====================================================================
+   7. PROFIL, blocs "récit" : un paragraphe + une image côte à côte
+   ---------------------------------------------------------------------
+   Chaque bloc est une ligne de deux colonnes. Le texte et l'image sont
+   centrés verticalement l'un par rapport à l'autre (align-items: center),
+   ce qui évite les décalages disgracieux.
+   La classe  recit__bloc--inverse  place l'image à GAUCHE du texte.
+   ===================================================================== */
+
+.recit__bloc {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 44px;
+  align-items: center;      /* aligne le texte et l'image sur leur milieu */
+  padding: 34px 0;
+  border-bottom: 1px solid var(--bordure);
+}
+.recit__bloc:last-child { border-bottom: none; padding-bottom: 0; }
+.recit__bloc:first-child { padding-top: 0; }
+
+/* Un bloc sur deux : l'image passe à gauche, le texte à droite */
+.recit__bloc--inverse .recit__texte { order: 2; }
+.recit__bloc--inverse .recit__media { order: 1; }
+
+.recit__texte p { color: var(--texte-doux); font-size: 1.02rem; margin: 0; }
+.recit__texte strong { color: var(--texte); font-weight: 600; }
+.recit__texte em { color: var(--turquoise); font-style: italic; }
+
+/* --- Cadre commun aux images et au schéma --- */
+.media-cadre {
+  border-radius: var(--arrondi);
+  overflow: hidden;
+  border: 1px solid var(--bordure);
+  background: var(--nuit);
+  box-shadow: var(--ombre-douce);
+}
+.media-cadre img { width: 100%; }
+.media-cadre figcaption {
+  padding: 10px 14px 12px;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--texte-faible);
+  background: rgba(255, 255, 255, 0.022);
+}
+.media-cadre figcaption em { font-style: italic; }
+
+/* Le schéma de thèse a déjà son propre fond : pas de doublon */
+.media-cadre--schema { background: transparent; }
+.media-cadre--schema img { display: block; }
+
+/* Crédit photo obligatoire, discret mais lisible */
+.credit {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--texte-faible);
+  opacity: 0.85;
+}
+
+/* --- Deux logos côte à côte (universités) --- */
+.duo-logos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.duo-logos img {
+  width: 100%;
+  height: 86px;
+  object-fit: contain;
+  padding: 12px;
+  border-radius: var(--arrondi-sm);
+  /* Fond blanc : ces logos sont dessinés pour un fond clair */
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--bordure);
+}
+
+/* --- Logo ECORUN seul, sans cadre --- */
+.recit__logo {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+
+/* =====================================================================
+   8. SPÉCIALITÉS, 3 cartes
+   ===================================================================== */
+
+.grille-spe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.carte-spe {
+  position: relative;
+  padding: 34px 30px;
+  border-radius: var(--arrondi);
+  background: var(--nuit);
+  border: 1px solid var(--bordure);
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.carte-spe:hover {
+  transform: translateY(-5px);
+  border-color: var(--bordure-vive);
+  background: var(--nuit-clair);
+}
+
+/* Trait lumineux qui se déploie en haut de la carte au survol */
+.carte-spe::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--turquoise), var(--bleu));
+  transition: width 0.45s ease;
+}
+.carte-spe:hover::after { width: 100%; }
+
+.carte-spe__icone {
+  width: 52px; height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  color: var(--turquoise);
+  background: rgba(69, 209, 196, 0.10);
+  border: 1px solid rgba(69, 209, 196, 0.22);
+}
+.carte-spe__icone svg { width: 28px; height: 28px; }
+
+.carte-spe h3 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.carte-spe p { color: var(--texte-doux); font-size: 0.96rem; margin-bottom: 18px; }
+
+
+/* =====================================================================
+   9. COMPÉTENCES, 6 cartes en trois colonnes
+   ===================================================================== */
+
+.grille-comp {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.carte-comp {
+  padding: 28px 26px;
+  border-radius: var(--arrondi);
+  background: var(--nuit);
+  border: 1px solid var(--bordure);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.carte-comp:hover { border-color: var(--bordure-vive); transform: translateY(-4px); }
+
+.carte-comp h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  font-size: 1.06rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--bordure);
+}
+.carte-comp__num {
+  font-family: var(--police-mono);
+  font-size: 0.78rem;
+  color: var(--turquoise);
+}
+
+
+/* =====================================================================
+   10. FRISE CHRONOLOGIQUE MULTILINÉAIRE (3 pistes parallèles)
+   ===================================================================== */
+
+/* --- Boutons de filtre au-dessus de la frise --- */
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 44px;
+}
+.filtre {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--texte-doux);
+  background: transparent;
+  border: 1px solid var(--bordure);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.filtre:hover { color: var(--texte); border-color: rgba(255, 255, 255, 0.28); }
+
+/* Le bouton actuellement sélectionné */
+.filtre--actif {
+  color: #04121A;
+  background: var(--turquoise);
+  border-color: var(--turquoise);
+}
+
+/* ---------------------------------------------------------------------
+   LA FRISE : une grille où CHAQUE LIGNE EST UNE ANNÉE
+   ---------------------------------------------------------------------
+   C'est ce qui permet d'aligner horizontalement les trois pistes : une
+   étape de 2018 en Formation se retrouve exactement à la même hauteur
+   qu'une étape de 2018 en Professionnel.
+
+   COMMENT ÇA MARCHE
+   Dans le fichier HTML, chaque élément porte son année, par exemple :
+       style="--annee: 2018"
+   Le calcul  calc(var(--annee) - 2011)  transforme cette année en
+   numéro de ligne de la grille : 2013 donne la ligne 2, 2014 la ligne 3,
+   et ainsi de suite (la ligne 1 est réservée aux titres des pistes).
+
+   POUR DÉPLACER UNE ÉTAPE DANS LE TEMPS : change simplement son année
+   dans le HTML. Rien à toucher ici.
+
+   ⚠️ Deux étapes de la MÊME piste ne doivent pas avoir la MÊME année,
+      sinon elles se superposeraient. Décale l'une d'un an si besoin
+      (le texte de la carte, lui, garde les vraies dates).
+   --------------------------------------------------------------------- */
+.frise {
+  display: grid;
+  /* 1 colonne étroite pour les années, puis les 3 pistes */
+  grid-template-columns: 62px repeat(3, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: start;
+  /* Hauteur minimale d'une année sans contenu */
+  grid-auto-rows: minmax(34px, auto);
+}
+
+/* --- Les titres des trois pistes, sur la première ligne --- */
+.piste__titre {
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.piste__titre[data-piste="formation"] { grid-column: 2; color: var(--bleu); }
+.piste__titre[data-piste="pro"]       { grid-column: 3; color: var(--turquoise); }
+.piste__titre[data-piste="asso"]      { grid-column: 4; color: var(--vert); }
+
+.piste__puce {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+/* --- Le ruban des années ---
+   Chaque année s'étire sur toute la largeur pour tracer un fin trait
+   de repère, avec son étiquette à gauche. */
+.annee {
+  grid-column: 1 / -1;
+  grid-row: calc(var(--annee) - 2011);
+  align-self: start;
+  padding-top: 7px;
+  border-top: 1px solid var(--bordure);
+  font-family: var(--police-mono);
+  font-size: 0.73rem;
+  letter-spacing: 0.06em;
+  color: var(--texte-faible);
+  pointer-events: none;   /* le trait ne doit jamais gêner un clic */
+}
+/* La dernière ligne du ruban, mise en avant */
+.annee--maintenant {
+  color: var(--turquoise);
+  border-top-color: var(--bordure-vive);
+  font-weight: 700;
+}
+
+/* --- Un "jalon" = une étape du parcours --- */
+.jalon {
+  position: relative;
+  grid-row: calc(var(--annee) - 2011);
+  /* Laisse la place au trait et à l'étiquette de l'année, juste au-dessus */
+  margin-top: 30px;
+  margin-bottom: 18px;
+  padding: 22px 22px 20px;
+  border-radius: var(--arrondi);
+  background: var(--nuit);
+  border: 1px solid var(--bordure);
+  transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+/* Chaque piste occupe sa colonne et porte sa couleur */
+.jalon[data-piste="formation"] { grid-column: 2; color: var(--bleu); }
+.jalon[data-piste="pro"]       { grid-column: 3; color: var(--turquoise); }
+.jalon[data-piste="asso"]      { grid-column: 4; color: var(--vert); }
+
+.jalon:hover {
+  border-color: currentColor;
+  background: var(--nuit-clair);
+  transform: translateY(-3px);
+}
+
+/* Le petit point coloré qui marque le début de l'étape */
+.jalon::before {
+  content: "";
+  position: absolute;
+  left: -18px; top: 26px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--profond);
+  border: 2px solid currentColor;
+}
+
+/* --- Les boutons de filtre masquent les pistes non retenues ---
+   Le JavaScript écrit  data-filtre="pro"  sur la frise, et le CSS
+   ci-dessous se charge du reste : il masque les autres pistes et
+   élargit celle qui reste. */
+.frise[data-filtre="formation"] .jalon:not([data-piste="formation"]),
+.frise[data-filtre="formation"] .piste__titre:not([data-piste="formation"]),
+.frise[data-filtre="pro"] .jalon:not([data-piste="pro"]),
+.frise[data-filtre="pro"] .piste__titre:not([data-piste="pro"]),
+.frise[data-filtre="asso"] .jalon:not([data-piste="asso"]),
+.frise[data-filtre="asso"] .piste__titre:not([data-piste="asso"]) {
+  display: none;
+}
+
+.frise[data-filtre="formation"],
+.frise[data-filtre="pro"],
+.frise[data-filtre="asso"] {
+  grid-template-columns: 62px minmax(0, 1fr);
+}
+.frise[data-filtre="formation"] .jalon[data-piste],
+.frise[data-filtre="formation"] .piste__titre[data-piste],
+.frise[data-filtre="pro"] .jalon[data-piste],
+.frise[data-filtre="pro"] .piste__titre[data-piste],
+.frise[data-filtre="asso"] .jalon[data-piste],
+.frise[data-filtre="asso"] .piste__titre[data-piste] {
+  grid-column: 2;
+}
+
+/* Mise en avant de l'étape en cours (ECORUN aujourd'hui) */
+.jalon--actuel {
+  border-color: var(--bordure-vive);
+  background: linear-gradient(160deg, rgba(69, 209, 196, 0.08), var(--nuit) 60%);
+}
+
+.jalon__date {
+  font-family: var(--police-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  color: currentColor;
+  margin-bottom: 7px;
+}
+
+.jalon__titre {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--texte);
+  margin-bottom: 8px;
+}
+
+.jalon__lieu {
+  display: flex;
+  flex-wrap: wrap;         /* permet d'afficher deux logos côte à côte */
+  align-items: center;
+  gap: 8px 10px;
+  font-size: 0.83rem;
+  color: var(--texte-faible);
+  margin-bottom: 12px;
+}
+
+/* Liste à puces à l'intérieur d'une carte du parcours
+   (utilisée pour détailler les chantiers de conservation) */
+.jalon__liste {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  color: var(--texte-doux);
+}
+.jalon__liste li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 7px;
+  line-height: 1.55;
+}
+.jalon__liste li::before {
+  content: "";
+  position: absolute;
+  left: 2px; top: 0.62em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.jalon__liste strong { color: var(--texte); font-weight: 600; }
+
+/* Les petits logos dans la frise (SEOR, TAAF, MARBEC...) */
+.jalon__logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+  padding: 3px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.94);   /* fond blanc : les logos sont lisibles */
+}
+
+.jalon__texte {
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+  margin-bottom: 14px;
+}
+.jalon__texte em { color: var(--turquoise); font-style: italic; }
+
+
+/* =====================================================================
+   11. SERVICES
+   ===================================================================== */
+
+.grille-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 60px;
+}
+
+.carte-service {
+  position: relative;
+  padding: 30px 28px;
+  border-radius: var(--arrondi);
+  background: var(--nuit);
+  border: 1px solid var(--bordure);
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.carte-service:hover {
+  transform: translateY(-5px);
+  border-color: var(--bordure-vive);
+  background: var(--nuit-clair);
+}
+
+/* Le gros numéro en filigrane dans le coin */
+.carte-service__num {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(69, 209, 196, 0.18);
+  margin-bottom: 14px;
+  transition: color 0.3s ease;
+}
+.carte-service:hover .carte-service__num { color: rgba(69, 209, 196, 0.45); }
+
+.carte-service h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+.carte-service p { font-size: 0.94rem; color: var(--texte-doux); }
+
+/* --- Les deux encarts (structures / zone d'intervention) --- */
+.grille-encarts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.encart {
+  padding: 30px 28px;
+  border-radius: var(--arrondi);
+  background: var(--profond);
+  border: 1px solid var(--bordure);
+}
+.encart__titre {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--texte);
+}
+.encart__note {
+  margin-top: 16px;
+  font-size: 0.86rem;
+  color: var(--texte-faible);
+}
+
+
+/* =====================================================================
+   12. PRODUCTIONS, publications et conférences
+   ===================================================================== */
+
+.liste-publis { display: grid; gap: 16px; }
+
+.publi {
+  position: relative;
+  padding: 24px 26px;
+  border-radius: var(--arrondi);
+  background: var(--nuit);
+  border: 1px solid var(--bordure);
+  border-left: 3px solid var(--bordure);
+  transition: border-left-color 0.3s ease, background-color 0.3s ease;
+}
+.publi:hover { border-left-color: var(--turquoise); background: var(--nuit-clair); }
+
+/* La pastille de statut (Publié / Soumis / En préparation) */
+.publi__statut {
+  display: inline-block;
+  font-family: var(--police-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.publi__statut--publie {
+  color: var(--vert);
+  background: rgba(154, 201, 83, 0.10);
+  border: 1px solid rgba(154, 201, 83, 0.30);
+}
+.publi__statut--soumis {
+  color: var(--bleu);
+  background: rgba(88, 180, 232, 0.10);
+  border: 1px solid rgba(88, 180, 232, 0.30);
+}
+.publi__statut--prep {
+  color: var(--texte-faible);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--bordure);
+}
+
+.publi__ref { font-size: 0.94rem; color: var(--texte-doux); }
+.publi__ref strong { color: var(--texte); font-weight: 700; }
+.publi__ref em { color: var(--texte); font-style: italic; }
+
+.publi__lien {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+.publi__lien span { transition: transform 0.2s ease; display: inline-block; }
+.publi__lien:hover span { transform: translateX(4px); }
+
+.publi--these { border-left-color: var(--turquoise); }
+
+/* --- Conférences --- */
+.liste-conf { display: grid; gap: 12px; }
+
+.conf {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  padding: 18px 24px;
+  border-radius: var(--arrondi-sm);
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px solid var(--bordure);
+  transition: background-color 0.3s ease;
+}
+.conf:hover { background: rgba(255, 255, 255, 0.05); }
+
+.conf__annee {
+  font-family: var(--police-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--turquoise);
+  flex-shrink: 0;
+  min-width: 46px;
+}
+.conf p { font-size: 0.93rem; color: var(--texte-doux); }
+.conf p strong { color: var(--texte); font-weight: 600; }
+
+.note-productions {
+  margin-top: 28px;
+  padding: 18px 22px;
+  border-radius: var(--arrondi-sm);
+  font-size: 0.9rem;
+  color: var(--texte-faible);
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px dashed var(--bordure);
+}
+
+
+/* =====================================================================
+   13. BANDEAU DE LOGOS (structures)
+   ===================================================================== */
+
+.bandeau-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+
+.bandeau-logos li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 100px;
+  padding: 16px;
+  border-radius: var(--arrondi);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--bordure);
+  /* Les logos sont en noir et blanc au repos, ils se colorent au survol */
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+.bandeau-logos li:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-4px);
+}
+.bandeau-logos img { max-height: 100%; width: auto; object-fit: contain; }
+
+.mention-logos {
+  max-width: 68ch;
+  margin: 34px auto 0;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--texte-faible);
+}
+
+
+/* =====================================================================
+   14. CONTACT
+   ===================================================================== */
+
+.section--contact {
+  background:
+    radial-gradient(760px 420px at 50% 0%, rgba(69, 209, 196, 0.09), transparent 66%),
+    var(--profond);
+  border-top: 1px solid var(--bordure);
+}
+
+.contact__bloc {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 44px 40px;
+  border-radius: var(--arrondi);
+  background: var(--nuit);
+  border: 1px solid var(--bordure);
+  text-align: center;
+}
+
+/* Le gros lien e-mail */
+.contact__mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 16px 30px;
+  border-radius: 999px;
+  background: rgba(69, 209, 196, 0.09);
+  border: 1px solid var(--bordure-vive);
+  /* Coupe proprement l'adresse si l'écran est très étroit */
+  word-break: break-word;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.contact__mail:hover {
+  text-decoration: none;
+  background: var(--turquoise);
+  color: #04121A;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(69, 209, 196, 0.28);
+}
+.contact__mail svg { flex-shrink: 0; }
+
+.contact__infos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+  text-align: left;
+}
+.contact__infos li {
+  font-size: 0.93rem;
+  color: var(--texte-doux);
+  padding-left: 16px;
+  border-left: 2px solid var(--bordure);
+}
+.contact__etiquette {
+  display: block;
+  font-family: var(--police-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  margin-bottom: 4px;
+}
+
+
+/* =====================================================================
+   15. PIED DE PAGE ET BOUTON "RETOUR EN HAUT"
+   ===================================================================== */
+
+.pied {
+  background: var(--abysse);
+  border-top: 1px solid var(--bordure);
+  padding: 56px 0 30px;
+}
+
+.pied__marque { text-align: center; margin-bottom: 30px; }
+.pied__marque img { width: 190px; height: auto; margin: 0 auto 14px; opacity: 0.9; }
+.pied__marque p { font-size: 0.9rem; color: var(--texte-faible); }
+
+.pied__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 26px;
+  padding-bottom: 28px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--bordure);
+}
+.pied__nav a { font-size: 0.9rem; color: var(--texte-doux); }
+.pied__nav a:hover { color: var(--turquoise); }
+
+.pied__bas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  font-size: 0.82rem;
+  color: var(--texte-faible);
+}
+.pied__bas a { color: var(--texte-faible); }
+.pied__bas a:hover { color: var(--turquoise); }
+
+/* --- Bouton rond "retour en haut" en bas à droite --- */
+.haut {
+  position: fixed;
+  right: 22px; bottom: 22px;
+  z-index: 90;
+  width: 46px; height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--abysse);
+  background: var(--turquoise);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--ombre-douce);
+  /* Caché par défaut : le JavaScript l'affiche quand on descend */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+.haut--visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.haut:hover { background: #5FE0D3; }
+
+
+/* =====================================================================
+   15 bis. PAGE DE TEXTE (mentions légales)
+   Styles utilisés uniquement par le fichier mentions-legales.html
+   ===================================================================== */
+
+.section--legale { padding-top: 150px; }
+
+.page-texte { max-width: 78ch; }
+
+.page-texte h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--texte);
+  margin: 42px 0 14px;
+  padding-left: 14px;
+  border-left: 3px solid var(--turquoise);
+}
+.page-texte h2:first-child { margin-top: 0; }
+
+.page-texte p {
+  color: var(--texte-doux);
+  margin-bottom: 14px;
+  font-size: 0.98rem;
+}
+.page-texte strong { color: var(--texte); font-weight: 600; }
+
+/* Liste "étiquette + valeur" utilisée pour l'identité de l'entreprise */
+.liste-legale { margin: 0 0 18px; }
+.liste-legale li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  padding: 9px 0;
+  font-size: 0.95rem;
+  color: var(--texte);
+  border-bottom: 1px solid var(--bordure);
+}
+.liste-legale li span {
+  min-width: 150px;
+  font-family: var(--police-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  padding-top: 3px;
+}
+
+.note-legale {
+  padding: 14px 18px;
+  border-radius: var(--arrondi-sm);
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px dashed var(--bordure);
+  font-size: 0.88rem;
+  color: var(--texte-faible);
+}
+
+/* Bouton compact, utilisé dans l'en-tête de la page légale */
+.bouton--petit { padding: 9px 18px; font-size: 0.86rem; }
+
+
+/* =====================================================================
+   16. ANIMATION D'APPARITION AU DÉFILEMENT
+   Les éléments avec la classe "reveler" arrivent en fondu quand on
+   les fait défiler. Le JavaScript ajoute la classe "reveler--visible".
+   ===================================================================== */
+
+.reveler {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveler--visible { opacity: 1; transform: translateY(0); }
+
+/* Sécurité : si le JavaScript est désactivé, tout reste visible */
+.sans-js .reveler { opacity: 1; transform: none; }
+
+
+/* =====================================================================
+   17. VERSION TABLETTE ET MOBILE (responsive)
+   ---------------------------------------------------------------------
+   Une "media query" applique des règles seulement en dessous d'une
+   certaine largeur d'écran. On va du plus large au plus étroit.
+   ===================================================================== */
+
+/* --- Écrans jusqu'à 1100 px : ordinateurs portables étroits --- */
+@media (max-width: 1100px) {
+
+  .nav__lien { padding: 9px 10px; font-size: 0.88rem; }
+  .entete__logo-texte small { display: none; }
+
+  /* La frise garde ses 3 pistes mais se resserre */
+  .frise { grid-template-columns: 48px repeat(3, minmax(0, 1fr)); column-gap: 16px; }
+  .jalon { padding: 18px 16px 16px; }
+  .annee { font-size: 0.68rem; }
+
+  /* Les compétences et services passent à 2 colonnes */
+  .grille-comp,
+  .grille-services { grid-template-columns: repeat(2, 1fr); }
+
+  /* Les chiffres passent sur 3 colonnes */
+  .chiffres__grille { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .chiffre + .chiffre::before { display: none; }
+}
+
+
+/* --- Écrans jusqu'à 900 px : tablettes --- */
+@media (max-width: 900px) {
+
+  .section { padding: 78px 0; }
+  .hero { padding: 122px 0 80px; }
+
+  /* --- LE MENU DEVIENT UN PANNEAU DÉROULANT --- */
+  .burger { display: block; }
+
+  .nav {
+    position: fixed;
+    top: 74px; left: 0; right: 0;
+    max-height: calc(100vh - 74px);
+    overflow-y: auto;
+    background: rgba(6, 15, 26, 0.985);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--bordure);
+
+    /* FERMÉ PAR DÉFAUT.
+       On utilise "visibility: hidden" et non un simple déplacement :
+       c'est la seule méthode qui garantisse à la fois que le panneau
+       est invisible, non cliquable, ET que ses liens ne soient pas
+       atteignables à la touche Tab par une personne naviguant au
+       clavier. Le léger décalage vers le haut donne l'effet de
+       glissement à l'ouverture. */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-14px);
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
+  }
+  /* Classe ajoutée par le JavaScript au clic sur le hamburger */
+  .nav--ouvert {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav__liste {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 16px 24px 26px;
+  }
+  .nav__lien { padding: 13px 14px; font-size: 1rem; }
+  .nav__lien--bouton { margin: 8px 0 0; text-align: center; }
+
+  /* Le hero passe sur une seule colonne, texte au-dessus */
+  .hero__grille { grid-template-columns: 1fr; gap: 44px; }
+  .hero__media { max-width: 440px; margin: 0 auto; }
+  .hero__requin { top: 8%; opacity: 0.7; }
+
+  /* Les blocs du profil passent sur une seule colonne :
+     le texte d'abord, puis son image en dessous. */
+  .recit__bloc {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 0;
+  }
+  /* On annule l'alternance gauche/droite, qui n'a plus de sens en colonne */
+  .recit__bloc--inverse .recit__texte,
+  .recit__bloc--inverse .recit__media { order: 0; }
+  .recit__media { max-width: 420px; margin: 0 auto; width: 100%; }
+
+  /* Les spécialités passent sur une colonne */
+  .grille-spe { grid-template-columns: 1fr; }
+
+  /* --- LA FRISE PASSE SUR UNE SEULE COLONNE ---
+     Sur un écran étroit, trois colonnes côte à côte deviennent
+     illisibles. On empile donc les pistes les unes sous les autres,
+     dans l'ordre du fichier HTML : Formation, puis Professionnel,
+     puis Associatif. Le ruban des années disparaît, chaque carte
+     affichant déjà ses dates. */
+  .frise,
+  .frise[data-filtre="formation"],
+  .frise[data-filtre="pro"],
+  .frise[data-filtre="asso"] {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+  .annee { display: none; }
+
+  /* On annule le placement par année : les cartes se suivent simplement */
+  .jalon[data-piste],
+  .piste__titre[data-piste] { grid-column: 1; }
+  .jalon { grid-row: auto; margin-top: 0; }
+  .piste__titre { grid-row: auto; margin-top: 26px; }
+  .jalon::before { display: none; }
+
+  /* Les encarts passent sur une colonne */
+  .grille-encarts { grid-template-columns: 1fr; }
+
+  .contact__bloc { padding: 34px 26px; }
+}
+
+
+/* --- Écrans jusqu'à 640 px : téléphones --- */
+@media (max-width: 640px) {
+
+  .conteneur { padding: 0 18px; }
+  .section { padding: 62px 0; }
+  .hero { padding: 110px 0 64px; }
+
+  .section__entete { margin-bottom: 40px; }
+
+  /* Les chiffres passent sur 2 colonnes */
+  .chiffres { padding: 34px 0; }
+  .chiffres__grille { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  /* Le 5e chiffre, seul sur sa ligne, prend toute la largeur */
+  .chiffre:last-child { grid-column: 1 / -1; }
+
+  /* Compétences et services sur une colonne */
+  .grille-comp,
+  .grille-services { grid-template-columns: 1fr; }
+
+  /* Les images du profil prennent toute la largeur disponible */
+  .recit__media { max-width: 100%; }
+  .recit__bloc { padding: 24px 0; }
+
+  /* Cartes et jalons plus compacts */
+  .carte-spe    { padding: 26px 22px; }
+  .carte-comp,
+  .carte-service { padding: 24px 20px; }
+  .jalon        { padding: 18px 18px 16px; }
+  .publi        { padding: 20px 20px; }
+
+  /* Les infos de contact l'une sous l'autre */
+  .contact__infos { grid-template-columns: 1fr; gap: 18px; }
+  .contact__mail { font-size: 0.92rem; padding: 14px 20px; gap: 10px; }
+
+  /* Les conférences : année au-dessus du texte */
+  .conf { flex-direction: column; gap: 4px; padding: 16px 18px; }
+
+  /* Logos un peu plus petits */
+  .bandeau-logos { gap: 16px; }
+  .bandeau-logos li { width: 132px; height: 82px; padding: 12px; }
+
+  /* Bouton retour en haut plus petit */
+  .haut { width: 42px; height: 42px; right: 16px; bottom: 16px; }
+
+  /* Le texte du drapeau disparaît, on garde juste l'image */
+  .drapeau__texte { display: none; }
+  .drapeau { padding: 6px 9px; }
+}
+
+
+/* =====================================================================
+   18. RÉGLAGES D'ACCESSIBILITÉ ET D'IMPRESSION
+   ===================================================================== */
+
+/* Si le visiteur a demandé à son système de réduire les animations
+   (option d'accessibilité), on les désactive toutes. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveler { opacity: 1; transform: none; }
+}
+
+/* Mise en page pour l'impression ou l'export en PDF :
+   fond blanc, texte noir, éléments décoratifs supprimés. */
+@media print {
+  .entete, .haut, .hero__decor, .filtres, .drapeau, .pied__nav { display: none !important; }
+  body { background: #fff; color: #000; }
+  .section, .section--fonce, .section--contact, .chiffres { background: #fff; padding: 20px 0; }
+  .carte-spe, .carte-comp, .carte-service, .jalon, .publi, .encart, .contact__bloc {
+    background: #fff;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  .recit__bloc { grid-template-columns: 1fr; break-inside: avoid; }
+  .section__titre, .jalon__titre, .carte-spe h3 { color: #000; }
+  .section__intro, .recit__texte p, .jalon__texte, .publi__ref { color: #333; }
+  .reveler { opacity: 1 !important; transform: none !important; }
+  .frise { grid-template-columns: 1fr; }
+  .annee { display: none; }
+  .jalon[data-piste], .piste__titre[data-piste] { grid-column: 1; }
+  .jalon { grid-row: auto; margin-top: 0; }
+  .piste__titre { grid-row: auto; }
+  a { color: #000; text-decoration: underline; }
+}

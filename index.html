@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  SITE : ECORUN, Florian Hoarau, consultant en écologie
+  FICHIER : index.html  (version FRANÇAISE, page d'accueil)
+  =====================================================================
+
+  COMMENT MODIFIER CE SITE (pour un non-informaticien)
+  ----------------------------------------------------
+  • Un COMMENTAIRE s'ouvre par les caractères  inférieur, point
+    d'exclamation, tiret, tiret  et se ferme par  tiret, tiret,
+    supérieur. Ce qui est à l'intérieur n'est PAS affiché sur le site :
+    c'est uniquement une explication pour toi. Tous les blocs
+    d'explication de ce fichier sont écrits ainsi.
+  • Pour changer un texte : trouve-le ci-dessous et remplace-le. C'est tout.
+  • Ne touche pas aux mots entre chevrons  < >  (ce sont les "balises"
+    qui donnent la mise en forme). Modifie seulement le texte AUTOUR.
+  • Chaque grande partie du site est repérée par un gros bandeau de
+    commentaire numéroté, par exemple « 5. SPÉCIALITÉS ». Utilise la
+    recherche (Ctrl + F) avec ce numéro pour t'y rendre directement.
+
+  ATTENTION : si tu modifies un texte ici, pense à modifier aussi son
+  équivalent anglais dans le fichier  en/index.html  (même structure).
+  =====================================================================
+-->
+<html lang="fr">
+<head>
+
+  <!-- ============================================================
+       PARTIE TECHNIQUE, à ne modifier que si tu sais ce que tu fais
+       ============================================================ -->
+
+  <!-- Jeu de caractères : permet d'afficher les accents (é, è, à, ç...) -->
+  <meta charset="UTF-8">
+
+  <!-- Rend le site adaptable aux mobiles et tablettes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Compatibilité avec les anciennes versions d'Internet Explorer / Edge -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Couleur de la barre du navigateur sur mobile -->
+  <meta name="theme-color" content="#060F1A">
+
+
+  <!-- ============================================================
+       RÉFÉRENCEMENT GOOGLE (SEO)
+       Ces lignes déterminent ce que Google affiche dans ses résultats.
+       ============================================================ -->
+
+  <!-- TITRE affiché dans l'onglet du navigateur ET dans Google.
+       Règle : moins de 60 caractères, avec le mot-clé principal au début. -->
+  <title>Florian Hoarau, consultant en écologie à La Réunion | ECORUN</title>
+
+  <!-- DESCRIPTION affichée sous le titre dans Google.
+       Règle : entre 140 et 160 caractères, donne envie de cliquer. -->
+  <meta name="description" content="Docteur en biologie marine, consultant indépendant en écologie à La Réunion : recherche, conservation, missions de terrain et sensibilisation, océan Indien.">
+
+  <!-- Mots-clés (peu utilisés par Google aujourd'hui, mais sans risque) -->
+  <meta name="keywords" content="consultant écologie La Réunion, écologue indépendant 974, expert biodiversité océan Indien, docteur biologie marine, expertise requins, études naturalistes Réunion, conservation espèces tropicales, sensibilisation environnement, télépilote drone environnement">
+
+  <!-- Auteur du site -->
+  <meta name="author" content="Florian Hoarau">
+
+  <!-- Autorise Google à indexer la page et à suivre les liens -->
+  <meta name="robots" content="index, follow">
+
+  <!-- ADRESSE OFFICIELLE de la page (évite le contenu dupliqué).
+       ⚠️ À MODIFIER si ton adresse de site change un jour. -->
+  <link rel="canonical" href="https://neufofa.github.io/ecorun/">
+
+  <!-- Indique à Google qu'il existe une version française et une version
+       anglaise de la même page. Améliore le référencement international. -->
+  <link rel="alternate" hreflang="fr" href="https://neufofa.github.io/ecorun/">
+  <link rel="alternate" hreflang="en" href="https://neufofa.github.io/ecorun/en/">
+  <link rel="alternate" hreflang="x-default" href="https://neufofa.github.io/ecorun/">
+
+
+  <!-- ============================================================
+       APERÇU LORS D'UN PARTAGE (LinkedIn, WhatsApp, Facebook...)
+       C'est la petite vignette qui s'affiche quand on partage le lien.
+       ============================================================ -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://neufofa.github.io/ecorun/">
+  <meta property="og:title" content="Florian Hoarau, consultant en écologie à La Réunion">
+  <meta property="og:description" content="Docteur en biologie marine. Recherche, conservation et sensibilisation dans l'océan Indien.">
+  <meta property="og:image" content="https://neufofa.github.io/ecorun/images/photos/hero-lagon.jpg">
+  <meta property="og:site_name" content="ECORUN">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <!-- ============================================================
+       ICÔNE DU SITE (le petit logo dans l'onglet du navigateur)
+       ============================================================ -->
+  <link rel="icon" type="image/png" href="images/logos/ecorun-embleme-sur-blanc.png">
+  <link rel="apple-touch-icon" href="images/logos/ecorun-embleme-sur-blanc.png">
+
+
+  <!-- ============================================================
+       FEUILLE DE STYLE (toutes les couleurs et la mise en page)
+       ============================================================ -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Sécurité : si le visiteur a désactivé JavaScript dans son
+       navigateur, on annule les animations d'apparition pour que
+       TOUT le contenu reste visible et lisible. -->
+  <noscript>
+    <style>.reveler { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
+
+
+  <!-- ============================================================
+       DONNÉES STRUCTURÉES (JSON-LD)
+       Ce bloc "explique" à Google qui tu es, dans un langage qu'il
+       comprend. C'est un gros bonus pour apparaître dans les résultats
+       enrichis et dans les recherches locales.
+       ⚠️ Pense à le mettre à jour si tes informations changent.
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://neufofa.github.io/ecorun/#personne",
+        "name": "Florian Hoarau",
+        "givenName": "Florian",
+        "familyName": "Hoarau",
+        "jobTitle": "Consultant en écologie",
+        "email": "mailto:florian.hoarau.m@gmail.com",
+        "description": "Docteur en biologie marine, consultant indépendant en écologie : recherche, conservation et sensibilisation.",
+        "image": "https://neufofa.github.io/ecorun/images/photos/portrait.jpg",
+        "url": "https://neufofa.github.io/ecorun/",
+        "knowsLanguage": ["fr", "en", "es"],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Université de La Réunion"
+        },
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Doctorat",
+          "name": "Doctorat en biologie marine",
+          "educationalLevel": "PhD",
+          "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Université de La Réunion" }
+        },
+        "knowsAbout": [
+          "Écologie marine",
+          "Biologie des requins",
+          "Conservation de la biodiversité",
+          "Écosystèmes tropicaux et insulaires",
+          "Isotopes stables",
+          "Sclérochronologie",
+          "Ornithologie"
+        ],
+        "worksFor": { "@id": "https://neufofa.github.io/ecorun/#entreprise" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://neufofa.github.io/ecorun/#entreprise",
+        "name": "ECORUN",
+        "alternateName": "ECORUN, Florian Hoarau, consultant en écologie",
+        "description": "Consultant indépendant en écologie : recherche scientifique, conservation, missions de terrain, analyses, rédaction et sensibilisation.",
+        "url": "https://neufofa.github.io/ecorun/",
+        "email": "mailto:florian.hoarau.m@gmail.com",
+        "image": "https://neufofa.github.io/ecorun/images/logos/ecorun-logo-sur-blanc.png",
+        "founder": { "@id": "https://neufofa.github.io/ecorun/#personne" },
+        "taxID": "10184120300017",
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "SIRET",
+          "value": "10184120300017"
+        },
+        "areaServed": [
+          { "@type": "Place", "name": "La Réunion" },
+          { "@type": "Place", "name": "Océan Indien" },
+          { "@type": "Place", "name": "International" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "La Réunion",
+          "addressCountry": "FR"
+        },
+        "knowsLanguage": ["fr", "en", "es"]
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body>
+
+<!--
+  Lien "invisible" qui n'apparaît qu'au clavier (touche Tab).
+  Il permet aux personnes malvoyantes de sauter directement au contenu.
+-->
+<a class="saut-contenu" href="#contenu">Aller au contenu principal</a>
+
+
+<!-- =====================================================================
+     1. EN-TÊTE, barre de navigation qui reste toujours visible en haut
+     ===================================================================== -->
+<header class="entete" id="entete">
+  <div class="conteneur entete__interieur">
+
+    <!-- Logo cliquable qui ramène en haut de page -->
+    <a class="entete__logo" href="#accueil" aria-label="ECORUN, retour en haut">
+      <img src="images/logos/ecorun-embleme.png" alt="Logo ECORUN" width="150" height="67">
+      <span class="entete__logo-texte">
+        <strong>ECORUN</strong>
+        <small>Florian Hoarau</small>
+      </span>
+    </a>
+
+    <!--
+      MENU DE NAVIGATION
+      Chaque lien pointe vers une section de la page grâce au dièse (#).
+      Exemple : href="#profil" amène à la section id="profil".
+      Pour ajouter ou retirer une entrée du menu, ajoute ou retire une ligne <li>.
+    -->
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul class="nav__liste">
+        <li><a class="nav__lien" href="#profil">Profil</a></li>
+        <li><a class="nav__lien" href="#specialites">Spécialités</a></li>
+        <li><a class="nav__lien" href="#competences">Compétences</a></li>
+        <li><a class="nav__lien" href="#parcours">Parcours</a></li>
+        <li><a class="nav__lien" href="#services">Services</a></li>
+        <li><a class="nav__lien" href="#productions">Productions</a></li>
+        <li><a class="nav__lien nav__lien--bouton" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="entete__actions">
+
+      <!--
+        BOUTON DE LANGUE, petit drapeau britannique discret.
+        Il renvoie vers la version anglaise du site (dossier /en/).
+      -->
+      <a class="drapeau" href="en/index.html" hreflang="en" lang="en"
+         aria-label="Switch to English version" title="English version">
+        <!-- Drapeau dessiné directement en code (SVG) : net sur tous les écrans -->
+        <svg viewBox="0 0 60 30" width="26" height="13" aria-hidden="true" focusable="false">
+          <clipPath id="coupe"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+          <g clip-path="url(#coupe)">
+            <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+          </g>
+        </svg>
+        <span class="drapeau__texte">EN</span>
+      </a>
+
+      <!--
+        BOUTON "HAMBURGER", n'apparaît que sur mobile.
+        Il ouvre et ferme le menu. Son fonctionnement est dans js/script.js
+      -->
+      <button class="burger" id="burger" type="button"
+              aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- Contenu principal de la page -->
+<main id="contenu">
+
+
+<!-- =====================================================================
+     2. ACCUEIL (HERO), la première chose que voit le visiteur
+     ===================================================================== -->
+<section class="hero" id="accueil">
+
+  <!--
+    Décor de fond : dégradé "profondeur marine" et vagues animées.
+    Tout est dessiné en code, aucune image n'est chargée : c'est rapide.
+    aria-hidden="true" signifie ignoré par les lecteurs d'écran (décoratif).
+  -->
+  <div class="hero__decor" aria-hidden="true">
+    <!-- Silhouette de requin en filigrane, très discrète -->
+    <svg class="hero__requin" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
+      <path fill="currentColor" d="M20 130c60-18 120-30 180-34l-38-56 78 50c30-1 60 0 90 4l30-52 6 58c48 10 92 28 130 56-38 10-78 16-118 18l-14 44-22-42c-40 1-80-2-118-8l-40 40 16-46c-64-12-124-30-180-32z"/>
+    </svg>
+    <!-- Trois vagues superposées qui ondulent lentement -->
+    <div class="hero__vagues">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C240,110 480,10 720,48 C960,86 1200,40 1440,72 L1440,120 L0,120 Z"/></svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C300,30 600,110 900,60 C1140,20 1300,80 1440,50 L1440,120 L0,120 Z"/></svg>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,96 C200,60 400,100 640,80 C900,58 1180,100 1440,84 L1440,120 L0,120 Z"/></svg>
+    </div>
+  </div>
+
+  <div class="conteneur hero__grille">
+
+    <!-- Colonne de gauche : le texte -->
+    <div class="hero__texte">
+
+      <!-- Petite pastille "disponible". Supprime cette ligne si tu ne veux plus l'afficher. -->
+      <p class="pastille"><span class="pastille__point"></span> Disponible pour missions</p>
+
+      <p class="hero__surtitre">ECORUN, consultant en écologie</p>
+
+      <!-- Titre principal de la page (il ne doit y avoir qu'un seul <h1>) -->
+      <h1 class="hero__titre">Florian&nbsp;Hoarau</h1>
+
+      <p class="hero__soustitre">
+        <span>Recherche</span><i>·</i><span>Conservation</span><i>·</i><span>Sensibilisation</span>
+      </p>
+
+      <p class="hero__accroche">
+        Docteur en biologie marine (Université de La Réunion, 2022) et président
+        co-fondateur de l'association Best Run. J'accompagne laboratoires,
+        associations, bureaux d'études et institutions sur leurs projets d'écologie,
+        du terrain le plus exigeant jusqu'à la publication des résultats.
+      </p>
+
+      <!-- Les deux spécialités mises en avant -->
+      <ul class="hero__specialites">
+        <li>Écologie des grands prédateurs marins</li>
+        <li>Conservation des espèces et écosystèmes tropicaux et insulaires</li>
+      </ul>
+
+      <!-- Boutons d'action -->
+      <div class="hero__boutons">
+        <a class="bouton bouton--plein" href="#contact">Me contacter</a>
+        <a class="bouton bouton--vide" href="#parcours">Découvrir mon parcours</a>
+      </div>
+
+      <p class="hero__lieu">
+        <!-- Petite icône "épingle de carte" dessinée en code -->
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        La Réunion, océan Indien
+      </p>
+    </div>
+
+    <!-- Colonne de droite : la photo -->
+    <div class="hero__media">
+      <figure class="cadre-photo">
+        <!--
+          POUR CHANGER CETTE PHOTO : remplace le fichier
+          images/photos/hero-lagon.jpg par la tienne (même nom),
+          ou change le chemin dans src="..." ci-dessous.
+          Garde toujours le texte alt="..." : il décrit l'image pour
+          Google et pour les personnes malvoyantes.
+        -->
+        <img src="images/photos/hero-lagon.jpg"
+             alt="Florian Hoarau en mission de terrain sur le lagon de Juan de Nova, îles Éparses"
+             width="1100" height="1467" loading="eager" decoding="async">
+        <figcaption>Mission TAAF, Juan de Nova (îles Éparses)</figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     3. CHIFFRES CLÉS, bandeau de crédibilité juste sous l'accueil
+     Pour modifier un chiffre : change le nombre dans <b> et le texte dans <span>.
+     ===================================================================== -->
+<section class="chiffres" aria-label="Chiffres clés">
+  <div class="conteneur chiffres__grille">
+    <div class="chiffre reveler"><b>2022</b><span>Doctorat en biologie marine</span></div>
+    <div class="chiffre reveler"><b>9 ans</b><span>d'expérience de terrain</span></div>
+    <div class="chiffre reveler"><b>5</b><span>publications (1 parue, 4 en cours)</span></div>
+    <div class="chiffre reveler"><b>3</b><span>missions aux îles Éparses</span></div>
+    <div class="chiffre reveler"><b>4</b><span>langues parlées</span></div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     4. PROFIL, qui je suis
+     ---------------------------------------------------------------------
+     Cette section est construite en "blocs récit" : chaque paragraphe est
+     accompagné d'une petite image ou d'un logo, alternativement à droite
+     puis à gauche du texte.
+
+     POUR AJOUTER UN BLOC : copie un <article class="recit__bloc"> entier.
+     Ajoute la classe  recit__bloc--inverse  pour placer l'image à GAUCHE.
+     ===================================================================== -->
+<section class="section" id="profil">
+  <div class="conteneur">
+
+    <!-- En-tête de section : réutilisé à l'identique dans toutes les sections -->
+    <header class="section__entete reveler">
+      <p class="section__oeil">01 / Profil</p>
+      <h2 class="section__titre">Qui je suis</h2>
+      <p class="section__intro">
+        Né à La Réunion en 1995, j'ai construit tout mon parcours (académique,
+        professionnel et associatif) autour de la biodiversité insulaire et marine
+        de l'océan Indien.
+      </p>
+    </header>
+
+    <div class="recit">
+
+      <!-- ---------- Bloc 1 : la formation ---------- -->
+      <article class="recit__bloc reveler">
+        <div class="recit__texte">
+          <p>
+            Ma formation à l'Université de La Réunion, complétée par une année
+            d'échange à l'Université Laval au Québec, m'a donné une double
+            compétence : les <strong>enjeux insulaires propres aux Mascareignes</strong>
+            (espèces indigènes, endémiques et exotiques, et leurs gestions) et les
+            <strong>écosystèmes marins tropicaux</strong> (récifs coralliens,
+            mangroves, herbiers, ressources halieutiques).
+          </p>
+        </div>
+        <div class="recit__media">
+          <!-- Deux logos côte à côte, sur pastille blanche pour rester lisibles -->
+          <div class="duo-logos">
+            <img src="images/logos/univ-reunion.jpg" alt="Université de La Réunion"
+                 width="220" height="220" loading="lazy">
+            <img src="images/logos/univ-laval.png" alt="Université Laval, Québec"
+                 width="220" height="116" loading="lazy">
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- Bloc 2 : la thèse (image à gauche) ---------- -->
+      <article class="recit__bloc recit__bloc--inverse reveler">
+        <div class="recit__texte">
+          <p>
+            Mon doctorat, soutenu en 2022, a porté sur les traits d'histoire de vie
+            et la sélection d'habitat des <strong>grands requins côtiers</strong> à
+            La Réunion. J'y ai combiné sclérochronologie, isotopes stables (carbone,
+            azote, oxygène) et éléments traces par laser ICP-MS pour reconstituer
+            leur croissance, leur alimentation et leurs déplacements.
+          </p>
+        </div>
+        <div class="recit__media">
+          <figure class="media-cadre">
+            <img src="images/photos/schema-these.jpg"
+                 alt="Coupe de vertèbre de requin tigre : les stries de croissance numérotées de 1 à 13 donnent l'âge, et l'analyse chimique révèle les habitats fréquentés"
+                 width="900" height="526" loading="lazy">
+            <figcaption>Coupe de vertèbre : les stries donnent l'âge, la chimie révèle les habitats</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ---------- Bloc 3 : le tuit-tuit ---------- -->
+      <article class="recit__bloc reveler">
+        <div class="recit__texte">
+          <p>
+            J'ai ensuite consacré deux ans à la conservation du <strong>tuit-tuit</strong>
+            (<em>Coracina newtoni</em>), l'un des oiseaux les plus rares au monde,
+            présent uniquement sur le massif de la Roche Écrite. Un terrain
+            particulièrement exigeant : forêt tropicale dense, remparts, bivouacs
+            hebdomadaires et encadrement de centaines de bénévoles.
+          </p>
+        </div>
+        <div class="recit__media">
+          <figure class="media-cadre">
+            <img src="images/photos/tuit-tuit.jpg"
+                 alt="Tuit-tuit (Coracina newtoni), oiseau endémique du massif de la Roche Écrite à La Réunion"
+                 width="640" height="427" loading="lazy">
+            <!-- Crédit photo obligatoire : ne pas retirer -->
+            <figcaption>Tuit-tuit <em>(Coracina newtoni)</em> <span class="credit">© J. Martinez</span></figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ---------- Bloc 4 : les îles Éparses (image à gauche) ---------- -->
+      <article class="recit__bloc recit__bloc--inverse reveler">
+        <div class="recit__texte">
+          <p>
+            En 2024 et 2025, j'ai été <strong>agent environnement pour les TAAF</strong>
+            dans les îles Éparses, principalement sur Juan de Nova. Seul scientifique
+            sur une île isolée, en cohabitation avec un détachement militaire, j'y ai
+            assuré l'ensemble des suivis d'espèces et d'écosystèmes servant à
+            identifier les enjeux de conservation prioritaires.
+          </p>
+        </div>
+        <div class="recit__media">
+          <figure class="media-cadre">
+            <img src="images/photos/juan-de-nova.jpg"
+                 alt="Vue satellite de l'île de Juan de Nova et de son lagon, îles Éparses, canal du Mozambique"
+                 width="640" height="384" loading="lazy">
+            <figcaption>Juan de Nova, canal du Mozambique</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ---------- Bloc 5 : le pétrel de Barau ---------- -->
+      <article class="recit__bloc reveler">
+        <div class="recit__texte">
+          <p>
+            En 2026, j'ai pris part à la campagne de sauvetage du
+            <strong>pétrel de Barau</strong> (<em>Pterodroma baraui</em>) avec la SEOR :
+            récupération des juvéniles échoués sur toute l'île, soins et remise à
+            l'envol, pour contrer les effets de la pollution lumineuse.
+          </p>
+        </div>
+        <div class="recit__media">
+          <figure class="media-cadre">
+            <img src="images/photos/petrel-barau.jpg"
+                 alt="Florian Hoarau relâchant un pétrel de Barau au-dessus de l'océan, à La Réunion"
+                 width="640" height="482" loading="lazy">
+            <figcaption>Remise à l'envol d'un pétrel de Barau</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- ---------- Bloc 6 : ECORUN (logo à gauche) ---------- -->
+      <article class="recit__bloc recit__bloc--inverse reveler">
+        <div class="recit__texte">
+          <p>
+            Depuis 2026, <strong>ECORUN</strong> répond aux besoins des structures qui
+            recherchent un appui scientifique de haut niveau sans pouvoir recruter à
+            temps plein : recherche, conservation, missions de terrain, analyses,
+            rédaction et sensibilisation.
+          </p>
+        </div>
+        <div class="recit__media">
+          <img class="recit__logo" src="images/logos/ecorun-logo.png"
+               alt="Logo ECORUN" width="695" height="484" loading="lazy">
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     5. SPÉCIALITÉS, mes domaines d'expertise
+     Pour ajouter une spécialité : copie un bloc <article class="carte-spe">
+     entier et modifie son contenu.
+     ===================================================================== -->
+<section class="section section--fonce" id="specialites">
+  <div class="conteneur">
+
+    <header class="section__entete reveler">
+      <p class="section__oeil">02 / Spécialités</p>
+      <h2 class="section__titre">Mes domaines d'expertise</h2>
+      <p class="section__intro">
+        Trois spécialités construites sur dix ans de recherche et de terrain,
+        du récif corallien à la forêt d'altitude.
+      </p>
+    </header>
+
+    <div class="grille-spe">
+
+      <article class="carte-spe reveler">
+        <div class="carte-spe__icone">
+          <!-- Icône requin -->
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M4 28c10-4 20-6 30-6l-6-10 14 9c2 0 4 1 6 2-4 4-9 7-14 9l-2 8-4-7c-8 1-16 0-24-5z"/></svg>
+        </div>
+        <h3>Écologie des grands prédateurs marins</h3>
+        <p>
+          Grands requins côtiers : âge, croissance, régime alimentaire,
+          déplacements et sélection d'habitat. Expertise reconnue par publication
+          internationale et par une thèse dédiée.
+        </p>
+        <ul class="etiquettes">
+          <li>Sclérochronologie</li><li>Isotopes stables C/N/O</li>
+          <li>Éléments traces (LA-ICP-MS)</li><li>Écologie trophique</li>
+          <li>Contenus stomacaux</li><li>Suivi de pêche</li>
+        </ul>
+      </article>
+
+      <article class="carte-spe reveler">
+        <div class="carte-spe__icone">
+          <!-- Icône feuille et île -->
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M38 8C22 8 12 16 12 28c0 4 1 7 3 9l-5 5 3 3 5-5c2 2 5 3 9 3 12 0 20-11 20-27 0-3 0-6-1-8-2-.5-5-.7-8-.7z"/></svg>
+        </div>
+        <h3>Conservation tropicale et insulaire</h3>
+        <p>
+          Espèces menacées, lutte contre les espèces exotiques envahissantes,
+          restauration d'habitats et suivis de population, en milieu insulaire
+          comme en forêt tropicale.
+        </p>
+        <ul class="etiquettes">
+          <li>Identification naturaliste</li><li>Suivi de reproduction</li>
+          <li>Lutte contre les EEE</li><li>Capture-marquage-recapture</li>
+          <li>Plans de conservation</li>
+        </ul>
+      </article>
+
+      <article class="carte-spe reveler">
+        <div class="carte-spe__icone">
+          <!-- Icône montagne et terrain -->
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M4 40 18 14l8 13 5-8 13 21z"/></svg>
+        </div>
+        <h3>Missions de terrain en milieu isolé</h3>
+        <p>
+          Forêt tropicale dense, remparts, îles isolées, bivouacs prolongés et
+          apnée. Une autonomie complète sur des missions physiquement et
+          humainement exigeantes, que peu de profils peuvent assurer.
+        </p>
+        <ul class="etiquettes">
+          <li>Autonomie totale</li><li>Logistique de mission</li>
+          <li>Encadrement d'équipes</li><li>Apnée</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     6. COMPÉTENCES, regroupées par famille
+     Pour ajouter une compétence : ajoute une ligne <li>ma compétence</li>
+     dans la bonne famille.
+     ===================================================================== -->
+<section class="section" id="competences">
+  <div class="conteneur">
+
+    <header class="section__entete reveler">
+      <p class="section__oeil">03 / Compétences</p>
+      <h2 class="section__titre">Ce que je sais faire</h2>
+      <p class="section__intro">
+        Du prélèvement sur le terrain à la publication des résultats, en passant
+        par le laboratoire et l'analyse statistique.
+      </p>
+    </header>
+
+    <div class="grille-comp">
+
+      <article class="carte-comp reveler">
+        <h3><span class="carte-comp__num">01</span> Terrain et naturalisme</h3>
+        <ul class="etiquettes">
+          <li>Identification botanique</li><li>Avifaune</li><li>Ichtyofaune</li>
+          <li>Comptages et densités</li><li>Suivi de reproduction</li>
+          <li>Capture-marquage-recapture</li><li>Transects récifaux</li>
+          <li>Recouvrement corallien</li><li>Suivi de mégafaune</li>
+          <li>Mangroves</li><li>Chantiers de conservation</li><li>Apnée</li>
+        </ul>
+      </article>
+
+      <article class="carte-comp reveler">
+        <h3><span class="carte-comp__num">02</span> Laboratoire</h3>
+        <ul class="etiquettes">
+          <li>Dissection</li><li>Contenus stomacaux</li>
+          <li>Identification de proies</li><li>Otolithes</li>
+          <li>Isotopes stables C / N / O</li><li>Éléments traces</li>
+          <li>Laser ICP-MS</li><li>Sclérochronologie</li>
+          <li>Préparation d'échantillons</li>
+        </ul>
+      </article>
+
+      <article class="carte-comp reveler">
+        <h3><span class="carte-comp__num">03</span> Analyse et données</h3>
+        <ul class="etiquettes">
+          <li>Analyses statistiques</li><li>Modélisation</li>
+          <li>Dynamique des populations</li>
+          <li>Cartographie SIG</li><li>Traitement de jeux de données</li>
+        </ul>
+      </article>
+
+      <article class="carte-comp reveler">
+        <h3><span class="carte-comp__num">04</span> Rédaction et communication</h3>
+        <ul class="etiquettes">
+          <li>Articles scientifiques</li><li>Rapports techniques</li>
+          <li>Livrables de mission</li><li>Synthèses bibliographiques</li>
+          <li>Conférences</li><li>Interventions scolaires</li>
+          <li>Vulgarisation</li><li>Animation de stands</li>
+          <li>Maîtrise des réseaux sociaux</li>
+        </ul>
+      </article>
+
+      <article class="carte-comp reveler">
+        <h3><span class="carte-comp__num">05</span> Encadrement et projets</h3>
+        <ul class="etiquettes">
+          <li>Encadrement de stagiaires</li><li>Gestion d'équipes</li>
+          <li>Gestion de projet</li><li>Encadrement de bénévoles</li>
+          <li>Recherche de subventions</li>
+          <li>Réunions de concertation</li><li>COPIL</li>
+          <li>Gestion associative</li>
+        </ul>
+      </article>
+
+      <article class="carte-comp reveler">
+        <h3><span class="carte-comp__num">06</span> Habilitations et langues</h3>
+        <ul class="etiquettes">
+          <li>Télépilote de drone</li><li>Agrément piégeur</li>
+          <li>Formation tir à la carabine</li>
+          <li>Français</li><li>Anglais</li><li>Espagnol</li><li>Créole</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     7. PARCOURS, frise chronologique multilinéaire
+     ---------------------------------------------------------------------
+     CHAQUE LIGNE DE LA FRISE EST UNE ANNÉE. C'est ce qui permet d'aligner
+     horizontalement les trois pistes : une étape de 2018 en Formation se
+     retrouve à la même hauteur qu'une étape de 2018 en Professionnel.
+
+     COMMENT AJOUTER UNE ÉTAPE
+     1. Copie un bloc <article class="jalon"> ... </article> entier.
+     2. Colle-le dans la bonne piste (repère-toi aux gros commentaires).
+     3. Change  data-piste="..."  : formation, pro ou asso.
+     4. Change  style="--annee: 2020"  pour l'année de DÉBUT de l'étape.
+        C'est cette année qui décide de sa position verticale.
+
+     ⚠️ Deux étapes de la MÊME piste ne doivent pas avoir la MÊME année,
+        sinon elles se superposeraient. Décale l'une d'un an : le texte de
+        la carte, lui, affiche toujours les vraies dates.
+
+     ⚠️ Si tu ajoutes une année plus récente que 2026, ajoute aussi son
+        étiquette dans le "ruban des années" juste en dessous.
+     ===================================================================== -->
+<section class="section section--fonce" id="parcours">
+  <div class="conteneur">
+
+    <header class="section__entete reveler">
+      <p class="section__oeil">04 / Parcours</p>
+      <h2 class="section__titre">Mon parcours, en trois fils</h2>
+      <p class="section__intro">
+        Formation, expérience professionnelle et engagement associatif se sont
+        construits en parallèle, chacun nourrissant les deux autres. Les trois
+        colonnes partagent la même échelle de temps : une même ligne correspond
+        à une même année.
+      </p>
+    </header>
+
+    <!--
+      BOUTONS DE FILTRE : permettent d'afficher une seule piste à la fois.
+      Leur fonctionnement est dans js/script.js (recherche "FILTRES").
+    -->
+    <div class="filtres reveler" role="group" aria-label="Filtrer le parcours">
+      <button class="filtre filtre--actif" type="button" data-filtre="tout">Tout afficher</button>
+      <button class="filtre filtre--formation"  type="button" data-filtre="formation">Formation</button>
+      <button class="filtre filtre--pro"        type="button" data-filtre="pro">Professionnel</button>
+      <button class="filtre filtre--asso"       type="button" data-filtre="asso">Associatif</button>
+    </div>
+
+    <div class="frise" id="frise" data-filtre="tout">
+
+      <!-- ============ LE RUBAN DES ANNÉES (colonne de gauche) ============
+           Chaque ligne trace un repère horizontal sur toute la largeur.
+           Pour prolonger la frise, ajoute simplement une ligne ici. -->
+      <span class="annee" style="--annee: 2013" aria-hidden="true">2013</span>
+      <span class="annee" style="--annee: 2014" aria-hidden="true">2014</span>
+      <span class="annee" style="--annee: 2015" aria-hidden="true">2015</span>
+      <span class="annee" style="--annee: 2016" aria-hidden="true">2016</span>
+      <span class="annee" style="--annee: 2017" aria-hidden="true">2017</span>
+      <span class="annee" style="--annee: 2018" aria-hidden="true">2018</span>
+      <span class="annee" style="--annee: 2019" aria-hidden="true">2019</span>
+      <span class="annee" style="--annee: 2020" aria-hidden="true">2020</span>
+      <span class="annee" style="--annee: 2021" aria-hidden="true">2021</span>
+      <span class="annee" style="--annee: 2022" aria-hidden="true">2022</span>
+      <span class="annee" style="--annee: 2023" aria-hidden="true">2023</span>
+      <span class="annee" style="--annee: 2024" aria-hidden="true">2024</span>
+      <span class="annee" style="--annee: 2025" aria-hidden="true">2025</span>
+      <span class="annee" style="--annee: 2026" aria-hidden="true">2026</span>
+      <span class="annee annee--maintenant" style="--annee: 2027" aria-hidden="true">Aujourd'hui</span>
+
+
+      <!-- ============================================================
+           PISTE 1 : FORMATION
+           ============================================================ -->
+      <h3 class="piste__titre" data-piste="formation">
+        <span class="piste__puce"></span> Formation
+      </h3>
+
+      <article class="jalon reveler" data-piste="formation" style="--annee: 2013">
+        <p class="jalon__date">2013 à 2016</p>
+        <h4 class="jalon__titre">Licence Biologie des Organismes et des Populations</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/univ-reunion.jpg" alt="Université de La Réunion" width="220" height="220" loading="lazy">
+          <img class="jalon__logo" src="images/logos/univ-laval.png" alt="Université Laval, Québec" width="220" height="116" loading="lazy">
+          Université de La Réunion, Université Laval (Québec)
+        </p>
+        <p class="jalon__texte">
+          Bases de biologie et d'écologie générale, avec une 3ᵉ année d'échange au
+          Québec orientée dynamique des populations, gestion et conservation de la faune.
+          Forte composante terrain et laboratoire.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Écologie générale</li><li>Zoologie</li>
+          <li>Espèces indigènes, endémiques et exotiques</li>
+          <li>Dynamique des populations</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="formation" style="--annee: 2016">
+        <p class="jalon__date">2016 à 2018</p>
+        <h4 class="jalon__titre">Master BEST-ALI</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/univ-reunion.jpg" alt="Université de La Réunion" width="220" height="220" loading="lazy">
+          Université de La Réunion
+        </p>
+        <p class="jalon__texte">
+          Biodiversité des Écosystèmes Tropicaux, spécialité Aquatique Littoral
+          et Insulaire. Master orienté recherche : enjeux d'écologie tropicale et
+          insulaire, bases du bureau d'études et de la séquence ERC.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Récifs coralliens</li><li>Mangroves et herbiers</li>
+          <li>Ressources halieutiques</li><li>Séquence ERC</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="formation" style="--annee: 2018">
+        <p class="jalon__date">2018 à 2022</p>
+        <h4 class="jalon__titre">Doctorat en biologie marine</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/univ-reunion.jpg" alt="Université de La Réunion" width="220" height="220" loading="lazy">
+          Université de La Réunion, UMR ENTROPIE, UMR MARBEC
+        </p>
+        <p class="jalon__texte">
+          « Traits d'histoire de vie et sélection d'habitat chez le requin bouledogue
+          et le requin tigre pêchés à La Réunion ». Soutenue en 2022.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Sclérochronologie</li><li>Isotopes C / N / O</li>
+          <li>Éléments traces</li><li>Laser ICP-MS</li>
+        </ul>
+      </article>
+
+
+      <!-- ============================================================
+           PISTE 2 : PROFESSIONNEL
+           ============================================================ -->
+      <h3 class="piste__titre" data-piste="pro">
+        <span class="piste__puce"></span> Professionnel
+      </h3>
+
+      <article class="jalon reveler" data-piste="pro" style="--annee: 2017">
+        <p class="jalon__date">2017</p>
+        <h4 class="jalon__titre">Stage de Master 1 : écologie trophique des requins</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/entropie.png" alt="Logo UMR ENTROPIE" width="200" height="72" loading="lazy">
+          UMR ENTROPIE, La Réunion
+        </p>
+        <p class="jalon__texte">
+          Étude du régime alimentaire des requins tigres et bouledogues :
+          dissections, identification des contenus stomacaux (poissons, calmars,
+          otolithes) et analyse des rapports isotopiques C/N des tissus.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Dissection</li><li>Contenus stomacaux</li>
+          <li>Otolithes</li><li>Isotopes C/N</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="pro" style="--annee: 2018">
+        <p class="jalon__date">2018</p>
+        <h4 class="jalon__titre">Stage de Master 2 : âge et croissance</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/marbec.png" alt="Logo UMR MARBEC" width="360" height="193" loading="lazy">
+          UMR ENTROPIE (La Réunion) et UMR MARBEC (Montpellier)
+        </p>
+        <p class="jalon__texte">
+          Détermination de l'âge et de la croissance des requins à partir des stries
+          de croissance de leurs vertèbres, et exploration de la signature chimique
+          le long de ces vertèbres pour reconstituer déplacements et changements
+          ontogéniques.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Sclérochronologie</li><li>Éléments traces</li>
+          <li>Laser ICP-MS</li><li>Modèles de croissance</li>
+        </ul>
+      </article>
+
+      <!-- Placé sur 2019 pour ne pas se superposer au stage de Master 2 (2018).
+           Le texte de la carte affiche bien la vraie période, 2018 à 2022. -->
+      <article class="jalon reveler" data-piste="pro" style="--annee: 2019">
+        <p class="jalon__date">2018 à 2022</p>
+        <h4 class="jalon__titre">Doctorant et enseignant</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/entropie.png" alt="Logo UMR ENTROPIE" width="200" height="72" loading="lazy">
+          Université de La Réunion, UMR ENTROPIE, UMR MARBEC
+        </p>
+        <p class="jalon__texte">
+          Thèse sur les traits d'histoire de vie et la sélection d'habitat des grands
+          requins côtiers. En parallèle : nombreux cours dispensés en licence et en
+          master, participation à toutes les éditions de la Fête de la Science et
+          des Nuits européennes des chercheurs.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Enseignement licence et master</li>
+          <li>Médiation scientifique</li>
+          <li>3ᵉ prix Doctoriales, projet innovant</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="pro" style="--annee: 2022">
+        <p class="jalon__date">2022 à 2024</p>
+        <h4 class="jalon__titre">Conservation du tuit-tuit</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/seor.jpg" alt="Logo SEOR" width="300" height="300" loading="lazy">
+          SEOR, Société d'Études Ornithologiques de La Réunion
+        </p>
+        <p class="jalon__texte">
+          Deux ans sur la conservation du tuit-tuit (<em>Coracina newtoni</em>),
+          l'un des oiseaux les plus rares au monde, présent uniquement sur le massif
+          de la Roche Écrite. Terrain extrême : forêt tropicale dense et humide,
+          remparts, bivouacs hebdomadaires, encadrement de centaines de bénévoles.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Prospection</li><li>Suivi de reproduction</li>
+          <li>Dératisation</li><li>Lutte contre les chats</li>
+          <li>Effets secondaires des rodenticides</li>
+          <li>Comparaison de méthodes de lutte</li>
+          <li>Cartographie</li><li>Rédaction de livrables</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="pro" style="--annee: 2024">
+        <p class="jalon__date">2024 à 2025</p>
+        <h4 class="jalon__titre">Agent environnement, îles Éparses</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/taaf.png" alt="Logo Terres australes et antarctiques françaises" width="260" height="158" loading="lazy">
+          TAAF, Terres australes et antarctiques françaises
+        </p>
+        <p class="jalon__texte">
+          Trois missions d'environ deux mois sur Juan de Nova, entrecoupées de
+          périodes au siège à La Réunion pour le traitement des données et la
+          préparation des campagnes. Seul scientifique sur l'île, en cohabitation
+          avec un détachement militaire : recueil de l'ensemble des données relatives
+          aux espèces et écosystèmes pour identifier les enjeux de conservation
+          prioritaires.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Traces de ponte de tortues marines</li>
+          <li>Suivi hebdomadaire des limicoles</li>
+          <li>Densité de sternes fuligineuses et huppées</li>
+          <li>Chouette effraie, héron cendré, corbeau-pie</li>
+          <li>Scinques de Juan de Nova</li>
+          <li>CMR rats et souris</li>
+          <li>Lutte contre les EEE végétales</li>
+          <li>Conservation de 20 espèces végétales menacées</li>
+          <li>Suivi de la pollution plastique</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="pro" style="--annee: 2026">
+        <p class="jalon__date">2026</p>
+        <h4 class="jalon__titre">Mission pétrel de Barau</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/seor.jpg" alt="Logo SEOR" width="300" height="300" loading="lazy">
+          SEOR, centre de soins
+        </p>
+        <p class="jalon__texte">
+          Campagne de sauvetage du pétrel de Barau (<em>Pterodroma baraui</em>) :
+          récupération des oiseaux échoués sur toute l'île, soins et rapatriement,
+          afin de permettre l'envol des juvéniles désorientés par les lumières
+          artificielles.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Centre de soins</li><li>Sauvetage d'oiseaux marins</li>
+          <li>Pollution lumineuse</li>
+        </ul>
+      </article>
+
+      <article class="jalon jalon--actuel reveler" data-piste="pro" style="--annee: 2027">
+        <p class="jalon__date">Depuis 2026</p>
+        <h4 class="jalon__titre">ECORUN, consultant en écologie</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/ecorun-embleme-sur-blanc.png" alt="Logo ECORUN" width="695" height="310" loading="lazy">
+          Micro-entreprise, La Réunion
+        </p>
+        <p class="jalon__texte">
+          Lancement de mon activité indépendante pour répondre aux besoins des
+          structures qui nécessitent une expertise écologique de haut niveau sans
+          pouvoir recruter à temps plein : recherche, conservation, sensibilisation,
+          missions de terrain, conseil, rédaction et analyses.
+        </p>
+      </article>
+
+
+      <!-- ============================================================
+           PISTE 3 : ASSOCIATIF
+           ============================================================ -->
+      <h3 class="piste__titre" data-piste="asso">
+        <span class="piste__puce"></span> Associatif
+      </h3>
+
+      <article class="jalon reveler" data-piste="asso" style="--annee: 2017">
+        <p class="jalon__date">Depuis 2017</p>
+        <h4 class="jalon__titre">Co-fondateur et président de Best Run</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/bestrun.jpg" alt="Logo association Best Run" width="320" height="320" loading="lazy">
+          Association de protection de la nature, La Réunion
+        </p>
+        <p class="jalon__texte">
+          Association fondée pendant mon Master 2. Chantiers participatifs de
+          conservation en partenariat avec d'autres associations, ramassages de
+          déchets terrestres et marins, programmes de recherche (récifs coralliens,
+          écologie des poissons, pollution plastique dans l'océan Indien), actions de
+          sensibilisation et sorties naturalistes.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Encadrement de stagiaires</li><li>Gestion d'un salarié</li>
+          <li>Programmes de recherche</li><li>Projets universitaires</li>
+          <li>Réunions de concertation régionales</li><li>COPIL</li>
+          <li>Conférences et interventions scolaires</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="asso" style="--annee: 2018">
+        <p class="jalon__date">Depuis 2018, plusieurs fois par an</p>
+        <h4 class="jalon__titre">Chantiers de conservation et sciences participatives</h4>
+        <p class="jalon__lieu">Avec les associations naturalistes de La Réunion</p>
+        <p class="jalon__texte">
+          Participation régulière, plusieurs fois par an depuis des années, aux
+          chantiers de conservation menés sur l'île :
+        </p>
+        <ul class="jalon__liste">
+          <li>Plantation et réhabilitation des plages de ponte de tortues marines, avec le <strong>CEDTM</strong></li>
+          <li>Chantiers de dératisation pour la conservation du tuit-tuit, avec la <strong>SEOR</strong></li>
+          <li>Réhabilitation des falaises de Manapany en faveur du gecko vert de Manapany, avec <strong>Nature Océan Indien</strong></li>
+          <li>Réhabilitation d'une forêt primaire, avec l'<strong>IRI</strong></li>
+          <li>Réhabilitation d'une zone humide, avec la <strong>SEOR</strong></li>
+          <li>Plantation d'un arboretum dans un collège de Sainte-Suzanne</li>
+          <li>Recherche et découverte d'une zone naturelle abritant une trentaine de plantes endémiques très rares, avec l'association <strong>Parade</strong>, données transmises aux organismes compétents</li>
+        </ul>
+        <p class="jalon__texte">
+          S'y ajoutent de nombreux ramassages de déchets organisés, ainsi que des
+          visites naturalistes que j'ai guidées, en forêt comme sous l'eau.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Plantation et restauration</li><li>Dératisation</li>
+          <li>Espèces endémiques rares</li><li>Ramassages de déchets</li>
+          <li>Visites naturalistes guidées</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="asso" style="--annee: 2020">
+        <p class="jalon__date">2020 à 2022</p>
+        <h4 class="jalon__titre">Projet « Fac des Sciences en Transition »</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/fac-transition.png" alt="Logo du projet Fac des Sciences en Transition" width="320" height="230" loading="lazy">
+          Campus universitaire de La Réunion
+        </p>
+        <p class="jalon__texte">
+          Projet que j'ai porté pour réintégrer les étudiants du campus dans un
+          contexte de décrochage post-Covid : valorisation d'un arboretum d'espèces
+          indigènes et endémiques rares, protection des arbres et de la zone,
+          valorisation des graines et plantules perdues, création d'une pépinière et
+          d'un jardin partagé, actions de développement durable. Projet précurseur,
+          repris ensuite par des associations dédiées.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Pépinière</li><li>Arboretum</li>
+          <li>Jardin partagé</li><li>Mobilisation étudiante</li>
+        </ul>
+      </article>
+
+      <article class="jalon reveler" data-piste="asso" style="--annee: 2025">
+        <p class="jalon__date">2025 à 2026</p>
+        <h4 class="jalon__titre">Photo-identification des murènes tatouées</h4>
+        <p class="jalon__lieu">
+          <img class="jalon__logo" src="images/logos/murene.png" alt="Logo du projet de photo-identification des murènes" width="320" height="221" loading="lazy">
+          Lagons de La Réunion
+        </p>
+        <p class="jalon__texte">
+          Développement d'une méthode de photo-identification des murènes tatouées
+          dans les lagons de La Réunion : sorties hebdomadaires sur le terrain,
+          prises de vue, mise au point de la méthode et identification des individus.
+          Encadrement de deux stagiaires de Master 1. Analyses et rédaction en cours.
+        </p>
+        <ul class="etiquettes etiquettes--fines">
+          <li>Photo-identification</li><li>Protocole de terrain</li>
+          <li>Suivi de population</li><li>Encadrement de stagiaires</li>
+          <li>Analyse de données</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     8. SERVICES, ce que je propose
+     ===================================================================== -->
+<section class="section" id="services">
+  <div class="conteneur">
+
+    <header class="section__entete reveler">
+      <p class="section__oeil">05 / Services</p>
+      <h2 class="section__titre">Ce que je peux faire pour vous</h2>
+      <p class="section__intro">
+        Une mission ponctuelle, un appui sur plusieurs mois ou un accompagnement
+        de projet : je m'adapte au besoin et aux moyens de votre structure.
+      </p>
+    </header>
+
+    <div class="grille-services">
+
+      <article class="carte-service reveler">
+        <span class="carte-service__num">01</span>
+        <h3>Recherche et expertise scientifique</h3>
+        <p>Conception et conduite de protocoles, appui méthodologique, analyse et interprétation de résultats, expertise sur les grands prédateurs marins et la biodiversité insulaire.</p>
+      </article>
+
+      <article class="carte-service reveler">
+        <span class="carte-service__num">02</span>
+        <h3>Missions de terrain et suivis naturalistes</h3>
+        <p>Inventaires, comptages, estimations de densité, suivis de population et de reproduction, y compris en milieu difficile, isolé ou nécessitant une autonomie complète.</p>
+      </article>
+
+      <article class="carte-service reveler">
+        <span class="carte-service__num">03</span>
+        <h3>Analyse de données et cartographie</h3>
+        <p>Traitement de jeux de données, analyses statistiques, modélisation, dynamique des populations et production de cartes SIG exploitables.</p>
+      </article>
+
+      <article class="carte-service reveler">
+        <span class="carte-service__num">04</span>
+        <h3>Rédaction scientifique et technique</h3>
+        <p>Articles scientifiques, rapports de mission, livrables, synthèses bibliographiques, dossiers et notes de cadrage, en français comme en anglais.</p>
+      </article>
+
+      <article class="carte-service reveler">
+        <span class="carte-service__num">05</span>
+        <h3>Sensibilisation et médiation scientifique</h3>
+        <p>Conférences, interventions scolaires, animations, tenue de stands et sorties naturalistes guidées, pour tous les publics.</p>
+      </article>
+
+      <article class="carte-service reveler">
+        <span class="carte-service__num">06</span>
+        <h3>Conseil et accompagnement de projets</h3>
+        <p>Appui au montage de projets, cadrage des enjeux écologiques, aide ponctuelle aux structures qui manquent de temps ou de compétences spécifiques.</p>
+      </article>
+
+    </div>
+
+    <!-- Deux encarts : avec qui je travaille, et où j'interviens -->
+    <div class="grille-encarts">
+
+      <div class="encart reveler">
+        <h3 class="encart__titre">Avec quelles structures je travaille</h3>
+        <ul class="etiquettes etiquettes--grandes">
+          <li>Laboratoires</li><li>Universités</li><li>Associations</li>
+          <li>Bureaux d'études</li><li>Collectivités</li><li>ONG</li>
+          <li>Entreprises</li><li>Institutions</li><li>Particuliers</li>
+        </ul>
+      </div>
+
+      <div class="encart reveler">
+        <h3 class="encart__titre">Où j'interviens</h3>
+        <ul class="etiquettes etiquettes--grandes">
+          <li>La Réunion <em>(priorité)</em></li>
+          <li>Océan Indien</li>
+          <li>International</li>
+          <li>Télétravail</li>
+        </ul>
+        <p class="encart__note">
+          Analyses, cartographie et rédaction peuvent être réalisées entièrement à distance.
+        </p>
+      </div>
+
+    </div>
+
+    <!--
+      ================================================================
+      BLOC TARIFS, À AJOUTER PLUS TARD
+      Pour l'afficher : supprime la ligne d'ouverture de commentaire
+      située 6 lignes plus haut, ainsi que la ligne de fermeture située
+      juste après le bloc, puis remplis les montants.
+      ================================================================
+      <div class="encart reveler">
+        <h3 class="encart__titre">Tarifs</h3>
+        <p>Taux journalier moyen : ... € HT. Devis gratuit sous 48 h.</p>
+      </div>
+      -->
+
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     9. PRODUCTIONS, publications, thèse et conférences
+     Pour ajouter une publication : copie un bloc <li class="publi"> entier.
+     ===================================================================== -->
+<section class="section section--fonce" id="productions">
+  <div class="conteneur">
+
+    <header class="section__entete reveler">
+      <p class="section__oeil">06 / Productions</p>
+      <h2 class="section__titre">Publications et communications</h2>
+      <p class="section__intro">
+        Articles scientifiques, thèse de doctorat et communications en congrès.
+      </p>
+    </header>
+
+    <!-- ---------- ARTICLES ---------- -->
+    <h3 class="sous-titre reveler">Articles scientifiques</h3>
+    <ul class="liste-publis">
+
+      <li class="publi reveler">
+        <span class="publi__statut publi__statut--publie">Publié</span>
+        <p class="publi__ref">
+          <strong>Hoarau, F.</strong>, Darnaude, A., Poirout, T., Jannel, L.-A.,
+          Labonne, M., &amp; Jaquemet, S. (2021).
+          <em>Age and growth of the bull shark (Carcharhinus leucas) around Reunion
+          Island, South West Indian Ocean.</em>
+          Journal of Fish Biology, 99(3), 1087-1099.
+        </p>
+        <a class="publi__lien" href="https://doi.org/10.1111/jfb.14813" target="_blank" rel="noopener noreferrer">
+          Lire l'article (DOI) <span aria-hidden="true">→</span>
+        </a>
+      </li>
+
+      <li class="publi reveler">
+        <span class="publi__statut publi__statut--prep">En préparation</span>
+        <p class="publi__ref">
+          Thibault, M., Jean, C., Lebreton, L., Piriou, O., Reveau, M., Benestroff, C.,
+          <strong>Hoarau, F.</strong>, Barret, M., &amp; Royer, S.-J.
+          <em>Eyes on plastics: using a sea turtle rehabilitation center's pumping
+          station as an observatory for coastal floating plastic debris (Réunion
+          Island, Indian Ocean).</em>
+          Frontiers in Environmental Science.
+        </p>
+      </li>
+
+      <li class="publi reveler">
+        <span class="publi__statut publi__statut--prep">En préparation</span>
+        <p class="publi__ref">
+          <strong>Hoarau, F.</strong>, Jaquemet, S., Guilhaumon, F., Labonne, M.,
+          Jannel, L.-A., Thibault, M., &amp; Darnaude, A.
+          <em>Age and growth of tiger shark (Galeocerdo cuvier) caught in the shark
+          control program around Reunion Island, Western Indian Ocean.</em>
+          Marine and Freshwater Research.
+        </p>
+      </li>
+
+      <li class="publi reveler">
+        <span class="publi__statut publi__statut--prep">En préparation</span>
+        <p class="publi__ref">
+          Jouve, E., <strong>Hoarau, F.</strong>, &amp; Diévart, A.
+          <em>The use of photo-identification for the geometric moray (Gymnothorax
+          griseus) population monitoring: preliminary study in Reunion Island.</em>
+        </p>
+      </li>
+
+    </ul>
+
+    <!-- ---------- THÈSE ---------- -->
+    <h3 class="sous-titre reveler">Thèse de doctorat</h3>
+    <ul class="liste-publis">
+      <li class="publi publi--these reveler">
+        <span class="publi__statut publi__statut--publie">2022</span>
+        <p class="publi__ref">
+          <strong>Hoarau, F.</strong> (2022).
+          <em>Traits d'histoire de vie et sélection d'habitat chez le requin bouledogue
+          et le requin tigre pêchés à La Réunion.</em>
+          Thèse de doctorat, Université de La Réunion. HAL : tel-04052252.
+        </p>
+        <a class="publi__lien" href="https://theses.hal.science/tel-04052252v1" target="_blank" rel="noopener noreferrer">
+          Consulter la thèse sur HAL <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- ---------- CONFÉRENCES ---------- -->
+    <h3 class="sous-titre reveler">Conférences et médiation scientifique</h3>
+    <ul class="liste-conf">
+      <li class="conf reveler">
+        <span class="conf__annee">2019</span>
+        <p><strong>First study of the age, growth and habitat use of the tiger and bull
+          sharks around Reunion Island.</strong><br>
+          11ᵉ symposium scientifique WIOMSA, Maurice.</p>
+      </li>
+      <li class="conf reveler">
+        <span class="conf__annee">2020</span>
+        <p><strong>Traits d'histoire de vie et place dans l'écosystème des requins tigre
+          et bouledogue à La Réunion.</strong><br>
+          Conférences BioEcoTrop, Université de La Réunion.</p>
+      </li>
+      <li class="conf reveler">
+        <span class="conf__annee">2020</span>
+        <p><strong>Ma thèse en 180 secondes.</strong><br>
+          Concours de vulgarisation scientifique.</p>
+      </li>
+      <li class="conf reveler">
+        <span class="conf__annee">2026</span>
+        <p><strong>Des polypes aux raies, les trésors du lagon réunionnais.</strong><br>
+          Animation Pint of Science Ouest Réunion.</p>
+      </li>
+      <li class="conf reveler">
+        <span class="conf__annee">2026</span>
+        <p><strong>La biodiversité marine du bassin de Manapany.</strong><br>
+          Présentation et visite guidée subaquatique, Village de la biodiversité,
+          La Réunion.</p>
+      </li>
+    </ul>
+
+    <p class="note-productions reveler">
+      À cela s'ajoutent de nombreux rapports techniques, internes ou publics, et
+      rapports de mission rédigés dans le cadre de mes différentes expériences
+      (SEOR, TAAF, Best Run).
+    </p>
+
+    <!--
+      ================================================================
+      BOUTON CV EN PDF, À AJOUTER PLUS TARD
+      Quand ton CV sera prêt : dépose le fichier à la racine du site
+      sous le nom  cv-florian-hoarau.pdf , puis supprime la ligne
+      d'ouverture de commentaire située 5 lignes plus haut et la ligne
+      de fermeture placée juste après le bloc.
+      ================================================================
+      <p class="reveler" style="text-align:center; margin-top:2.5rem;">
+        <a class="bouton bouton--plein" href="cv-florian-hoarau.pdf" download>
+          Télécharger mon CV (PDF)
+        </a>
+      </p>
+      -->
+
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     10. STRUCTURES, logos des organismes avec lesquels j'ai collaboré
+     ⚠️ Titre volontairement neutre : il indique une collaboration passée
+        et non un partenariat officiel ou un soutien de ces structures.
+     ===================================================================== -->
+<section class="section" id="structures">
+  <div class="conteneur">
+
+    <header class="section__entete reveler">
+      <p class="section__oeil">07 / Références</p>
+      <h2 class="section__titre">Structures avec lesquelles j'ai collaboré</h2>
+      <p class="section__intro">
+        Laboratoires de recherche, associations et institutions publiques auprès
+        desquels j'ai exercé au cours de mon parcours.
+      </p>
+    </header>
+
+    <ul class="bandeau-logos reveler">
+      <li><img src="images/logos/univ-reunion.jpg" alt="Université de La Réunion" width="220" height="220" loading="lazy"></li>
+      <li><img src="images/logos/entropie.png" alt="UMR ENTROPIE" width="200" height="72" loading="lazy"></li>
+      <li><img src="images/logos/marbec.png"   alt="UMR MARBEC"   width="360" height="193" loading="lazy"></li>
+      <li><img src="images/logos/seor.jpg"     alt="SEOR, Société d'Études Ornithologiques de La Réunion" width="300" height="300" loading="lazy"></li>
+      <li><img src="images/logos/taaf.png"     alt="TAAF, Terres australes et antarctiques françaises" width="260" height="158" loading="lazy"></li>
+      <li><img src="images/logos/bestrun.jpg"  alt="Association Best Run" width="320" height="320" loading="lazy"></li>
+    </ul>
+
+    <p class="mention-logos reveler">
+      Les logos et marques présentés appartiennent à leurs détenteurs respectifs.
+      Leur présence illustre un parcours professionnel et ne constitue ni un
+      partenariat en cours, ni une approbation de la présente activité.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     11. CONTACT
+     ===================================================================== -->
+<section class="section section--contact" id="contact">
+  <div class="conteneur">
+
+    <header class="section__entete section__entete--centre reveler">
+      <p class="section__oeil">08 / Contact</p>
+      <h2 class="section__titre">Travaillons ensemble</h2>
+      <p class="section__intro">
+        Un projet, une mission de terrain, un besoin d'analyse ou simplement une
+        question ? Écrivez-moi, je réponds rapidement.
+      </p>
+    </header>
+
+    <div class="contact__bloc reveler">
+
+      <!--
+        LIEN EMAIL
+        Un clic ouvre le logiciel de messagerie du visiteur avec ton adresse
+        et un objet déjà remplis.
+        POUR CHANGER TON ADRESSE : remplace les DEUX occurrences de
+        florian.hoarau.m@gmail.com ci-dessous (dans href="mailto:..." et
+        dans le texte affiché).
+      -->
+      <a class="contact__mail"
+         href="mailto:florian.hoarau.m@gmail.com?subject=Demande%20via%20le%20site%20ECORUN">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+        florian.hoarau.m@gmail.com
+      </a>
+
+      <ul class="contact__infos">
+        <li>
+          <span class="contact__etiquette">Localisation</span>
+          La Réunion, océan Indien
+        </li>
+        <li>
+          <span class="contact__etiquette">Zone d'intervention</span>
+          La Réunion en priorité, océan Indien et international possibles, télétravail
+        </li>
+        <li>
+          <span class="contact__etiquette">Langues</span>
+          Français, anglais, espagnol, créole
+        </li>
+        <li>
+          <span class="contact__etiquette">Statut</span>
+          Micro-entreprise ECORUN, SIRET 10184120300017
+        </li>
+      </ul>
+
+      <!--
+        ================================================================
+        TÉLÉPHONE ET RÉSEAUX SOCIAUX, À AJOUTER PLUS TARD
+        Pour les afficher : supprime la ligne d'ouverture de commentaire
+        située 5 lignes plus haut et la ligne de fermeture placée juste
+        après le bloc, puis remplace les XXX par tes informations.
+        ================================================================
+        <ul class="contact__infos">
+          <li>
+            <span class="contact__etiquette">Téléphone</span>
+            <a href="tel:+262XXXXXXXXX">+262 XXX XXX XXX</a>
+          </li>
+          <li>
+            <span class="contact__etiquette">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/XXXXX" target="_blank" rel="noopener noreferrer">Mon profil LinkedIn</a>
+          </li>
+          <li>
+            <span class="contact__etiquette">ResearchGate</span>
+            <a href="https://www.researchgate.net/profile/XXXXX" target="_blank" rel="noopener noreferrer">Mes publications</a>
+          </li>
+          <li>
+            <span class="contact__etiquette">ORCID</span>
+            <a href="https://orcid.org/XXXX-XXXX-XXXX-XXXX" target="_blank" rel="noopener noreferrer">0000-0000-0000-0000</a>
+          </li>
+        </ul>
+        -->
+
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+
+<!-- =====================================================================
+     12. PIED DE PAGE
+     ===================================================================== -->
+<footer class="pied">
+  <div class="conteneur pied__interieur">
+
+    <div class="pied__marque">
+      <img src="images/logos/ecorun-logo.png" alt="Logo ECORUN" width="220" height="153" loading="lazy">
+      <p>Consultant en écologie. Recherche, conservation et sensibilisation.</p>
+    </div>
+
+    <nav class="pied__nav" aria-label="Navigation de pied de page">
+      <a href="#profil">Profil</a>
+      <a href="#specialites">Spécialités</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#services">Services</a>
+      <a href="#productions">Productions</a>
+      <a href="#contact">Contact</a>
+      <a href="en/index.html" hreflang="en" lang="en">English</a>
+    </nav>
+
+    <div class="pied__bas">
+      <!-- L'année se met à jour toute seule grâce à js/script.js -->
+      <p>© <span id="annee">2026</span> Florian Hoarau, ECORUN. Tous droits réservés.</p>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- Bouton "retour en haut", apparaît quand on descend dans la page -->
+<button class="haut" id="haut" type="button" aria-label="Retour en haut de la page">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 4l8 8-1.4 1.4L13 7.8V20h-2V7.8L5.4 13.4 4 12z"/></svg>
+</button>
+
+
+<!-- Le fichier JavaScript est chargé en dernier pour ne pas ralentir l'affichage -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

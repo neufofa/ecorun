@@ -1,0 +1,17 @@
+# =====================================================================
+# robots.txt — instructions pour les robots des moteurs de recherche
+# =====================================================================
+# Ce fichier dit à Google (et aux autres moteurs) ce qu'ils ont le droit
+# de visiter sur le site. Ici, on autorise tout : c'est ce qu'on veut
+# pour un site vitrine que l'on souhaite voir référencé.
+#
+# ⚠️ Si tu changes l'adresse du site, modifie aussi la ligne "Sitemap"
+#    tout en bas.
+# =====================================================================
+
+User-agent: *
+Allow: /
+
+# Adresse du plan du site (voir le fichier sitemap.xml).
+# C'est ce qui aide Google à découvrir toutes les pages rapidement.
+Sitemap: https://neufofa.github.io/ecorun/sitemap.xml
